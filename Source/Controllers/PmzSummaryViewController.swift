@@ -1,10 +1,3 @@
-//
-//  FourthController.swift
-//  PaymentezSDK
-//
-//  Created by Fennoma on 11/09/2020.
-//
-
 import Foundation
 
 class PmzSummaryViewController: PaymentezViewController {
@@ -13,10 +6,6 @@ class PmzSummaryViewController: PaymentezViewController {
     
     @IBOutlet var innerBackButton: UIView!
     @IBOutlet var nextButton: UIView!
-    
-    var order: PmzOrder?
-    var justSummary: Bool = false
-    
     init() {
         super.init(nibName: PmzSummaryViewController.PMZ_SUMMARY_VC, bundle: PaymentezSDK.shared.getBundle())
     }
@@ -37,8 +26,5 @@ class PmzSummaryViewController: PaymentezViewController {
     
     @IBAction func backDidPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
-        if justSummary {
-            PaymentezSDK.shared.onSearchCancelled()
-        }
     }
 }

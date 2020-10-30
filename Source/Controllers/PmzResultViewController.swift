@@ -1,10 +1,3 @@
-//
-//  PaymentDetailViewController.swift
-//  PaymentezSDK
-//
-//  Created by Fennoma on 21/09/2020.
-//
-
 import Foundation
 
 class PmzResultViewController: PaymentezViewController {
@@ -14,7 +7,6 @@ class PmzResultViewController: PaymentezViewController {
     @IBOutlet var nextButton: UIView!
     
     var order: PmzOrder?
-    var orders: [PmzOrder]?
     
     init() {
         super.init(nibName: PmzResultViewController.PMZ_RESULT_VC, bundle: PaymentezSDK.shared.getBundle())

@@ -1,10 +1,3 @@
-//
-//  FirstController.swift
-//  PaymentezSDK
-//
-//  Created by Fennoma on 11/09/2020.
-//
-
 import Foundation
 import UIKit
 
@@ -12,9 +5,10 @@ class PmzStoresViewController: PaymentezViewController {
     
     static let PMZ_STORES_VC = "PmzStoresVC"
     
-    @IBOutlet var nextButton: UIView!
+    var stores: [PmzStore]?
+    var menu: PmzMenu?
     
-    var searchFilter: String?
+    @IBOutlet var nextButton: UIView!
     
     init() {
         super.init(nibName: PmzStoresViewController.PMZ_STORES_VC, bundle: PaymentezSDK.shared.getBundle())
@@ -30,12 +24,46 @@ class PmzStoresViewController: PaymentezViewController {
     }
     
     @objc func goToSecondPage() {
-        let secondController = PmzMenuViewController.init()
-        PaymentezSDK.shared.pushVC(vc: secondController)
+        /*let secondController = PmzMenuViewController.init()
+        PaymentezSDK.shared.pushVC(vc: secondController)*/
+        startSession()
     }
     
     @IBAction func backDidPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
         PaymentezSDK.shared.onSearchCancelled()
+    }
+    
+    func startSession() {
+        API.sharedInstance.startSession(session: PaymentezSDK.shared.session!, callback: { [weak self] (token) in
+            guard let self = self else { return }
+            PaymentezSDK.shared.token = token
+            self.getStores()
+            }, failure: { [weak self] (error) in
+                guard let self = self else { return }
+                self.nextButton.backgroundColor = UIColor(named: "black")
+        })
+    }
+    
+    func getStores() {
+        API.sharedInstance.getStores(callback: { [weak self] (stores) in
+            guard let self = self else { return }
+            self.stores = stores
+            self.getMenu(storeId: stores[0].id!)
+            }, failure: { [weak self] (error) in
+                guard let self = self else { return }
+                self.nextButton.backgroundColor = UIColor(named: "black")
+        })
+    }
+    
+    func getMenu(storeId: CLong) {
+        API.sharedInstance.getMenu(storeId: storeId, callback: { [weak self] (menu) in
+            guard let self = self else { return }
+            self.menu = menu
+            
+            }, failure: { [weak self] (error) in
+                guard let self = self else { return }
+                self.nextButton.backgroundColor = UIColor(named: "black")
+        })
     }
 }

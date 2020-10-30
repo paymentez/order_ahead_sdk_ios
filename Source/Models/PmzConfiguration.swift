@@ -1,10 +1,3 @@
-//
-//  PmzConfiguration.swift
-//  PaymentezSDK
-//
-//  Created by Fennoma on 21/09/2020.
-//
-
 import Foundation
 
 public class PmzConfiguration {
@@ -39,5 +32,15 @@ public class PmzConfiguration {
         if let discount = dictionary["discount"] as? Double {
             self.discount = discount
         }
+    }
+    
+    static func getJSON(configurations: [PmzConfiguration]?) -> NSArray {
+        let array = NSMutableArray()
+        if(configurations != nil) {
+            for configuration in configurations! {
+                array.add([API.K.ParameterKey.configurationId: configuration.id!])
+            }
+        }
+        return array
     }
 }

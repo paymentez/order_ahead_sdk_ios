@@ -1,23 +1,16 @@
-//
-//  PmzSponsor.swift
-//  PaymentezSDK
-//
-//  Created by Fennoma on 07/10/2020.
-//
-
 import Foundation
 
-public class PmzSponsor {
+class PmzSponsor {
     
-    public var name: String?
-    public var logoUrl: String?
-    public var iconUrl: String?
-    public var loaderUrl: String?
-    public var headerEmailUrl: String?
-    public var colorHex: String?
-    public var splashUrl: String?
-    public var transactionSuccessUrl: String?
-    public var transactionErrorUrl: String?
+    var name: String?
+    var logoUrl: String?
+    var iconUrl: String?
+    var loaderUrl: String?
+    var headerEmailUrl: String?
+    var colorHex: String?
+    var splashUrl: String?
+    var transactionSuccessUrl: String?
+    var transactionErrorUrl: String?
     
     init(){}
     

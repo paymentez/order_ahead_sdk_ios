@@ -1,15 +1,7 @@
-//
-//  ViewController.swift
-//  PaymentezSDK
-//
-//  Created by ftamburri on 09/11/2020.
-//  Copyright (c) 2020 ftamburri. All rights reserved.
-//
-
 import UIKit
 import PaymentezSDK
 
-class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallback, PmzGetStoresCallback, UITextFieldDelegate {
+class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallback, UITextFieldDelegate {
     
     @IBOutlet var backgroundColorInput: UITextField!
     @IBOutlet var textColorInput: UITextField!
@@ -23,11 +15,7 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
     
     @IBOutlet var searchButton: UIView!
     @IBOutlet var searchWithStoreIdButton: UIView!
-    @IBOutlet var showSummaryButton: UIView!
-    @IBOutlet var finishPurchaseButton: UIView!
-    @IBOutlet var finishWithoutSummaryButton: UIView!
-    @IBOutlet var getStoresButton: UIView!
-    
+    @IBOutlet var detailButton: UIView!
     @IBOutlet var randomizeButton: UIView!
     
     var lastSelectedTextField: UITextField?
@@ -45,14 +33,9 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
         colors = Color.getColors()
         setDelegates()
         self.view?.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector (self.dismissKeyboard)))
-        
         searchButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goToSearch)))
         searchWithStoreIdButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goToSearchWithId)))
-        showSummaryButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.showSummary)))
-        finishPurchaseButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goToPaymentChecking)))
-        finishWithoutSummaryButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goToPaymentWOSummaryChecking)))
-        getStoresButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.getStores)))
-        
+        detailButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goToPaymentChecking)))
         randomizeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.randomizeColors)))
         randomizeColors()
     }
@@ -81,7 +64,7 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
                 .setTextColor(textColor: textColorSelected!.color!)
                 .setButtonBackgroundColor(buttonBackgroundColor: buttonColorSelected!.color!)
                 .setButtonTextColor(buttonTextColor: buttonTextColorSelected!.color!)
-                .startSearch(navigationController: navigationController!, buyer: getBuyer(), appOrderReference: "appOrderReference", callback: self)
+                .startSearch(navigationController: navigationController!, callback: self)
     }
     
     @objc func goToSearchWithId() {
@@ -90,16 +73,7 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
                 .setTextColor(textColor: textColorSelected!.color!)
                 .setButtonBackgroundColor(buttonBackgroundColor: buttonColorSelected!.color!)
                 .setButtonTextColor(buttonTextColor: buttonTextColorSelected!.color!)
-                .startSearch(navigationController: navigationController!, buyer: getBuyer(), appOrderReference: "appOrderReference", storeId: 120, callback: self)
-    }
-    
-    @objc func showSummary() {
-        PaymentezSDK.shared
-                .setBackgroundColor(backgroundColor: backgroundColorSelected!.color!)
-                .setTextColor(textColor: textColorSelected!.color!)
-                .setButtonBackgroundColor(buttonBackgroundColor: buttonColorSelected!.color!)
-                .setButtonTextColor(buttonTextColor: buttonTextColorSelected!.color!)
-                .showSummary(navigationController: navigationController!, appOrderReference: "appOrderReference", order: PmzOrder.hardcoded(), callback: self)
+                .startSearch(navigationController: navigationController!, storeId: 120, callback: self)
     }
     
     @objc func goToPaymentChecking() {
@@ -108,37 +82,7 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
                 .setTextColor(textColor: textColorSelected!.color!)
                 .setButtonBackgroundColor(buttonBackgroundColor: buttonColorSelected!.color!)
                 .setButtonTextColor(buttonTextColor: buttonTextColorSelected!.color!)
-                .startPayAndPlace(navigationController: navigationController!, order: PmzOrder.hardcoded(), paymentData: getPaymentData(), callback: self)
-    }
-    
-    @objc func goToPaymentWOSummaryChecking() {
-        PaymentezSDK.shared
-                .setBackgroundColor(backgroundColor: backgroundColorSelected!.color!)
-                .setTextColor(textColor: textColorSelected!.color!)
-                .setButtonBackgroundColor(buttonBackgroundColor: buttonColorSelected!.color!)
-                .setButtonTextColor(buttonTextColor: buttonTextColorSelected!.color!)
-                .startPayAndPlace(navigationController: navigationController!, order: PmzOrder.hardcoded(), paymentData: getPaymentData(), skipSummary: true, callback: self)
-    }
-    
-    @objc func getStores() {
-        PaymentezSDK.shared.getStores(callback: self)
-    }
-    
-    func getBuyer() -> PmzBuyer {
-        return PmzBuyer()
-                .setName("Buyer Test")
-                .setEmail("buyer@test.com.ar")
-                .setPhone("01112345678")
-                .setFiscalNumber("fiscalNumber")
-                .setUserReference("userReference")
-    }
-    
-    func getPaymentData() -> PmzPaymentData {
-        return PmzPaymentData()
-                .setPaymentMethodReference("paymentMethodReference")
-                .setPaymentReference("paymentReference")
-                .setAmount(20000)
-                .setService(200)
+                .startPayAndPlace(order: PmzOrder.hardcoded(), paymentReference: "paymentReference", navigationController: navigationController!, callback: self)
     }
     
     func searchFinishedSuccessfully(order: PmzOrder) {
@@ -154,7 +98,7 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
     }
     
     func payAndPlaceOnError(order: PmzOrder, error: PmzError) {
-        if let error = error.type {
+        if let error = error.errorCode {
             switch error {
             case PmzError.PAYMENT_ERROR_KEY:
                 showToast(controller: self, message: "Ocurrió un error con el Pago de la orden", seconds: 2)
@@ -164,14 +108,6 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
                 showToast(controller: self, message: "Ocurrió un error inesperado", seconds: 2)
             }
         }
-    }
-    
-    func gotStores(stores: [PmzStore]) {
-        showToast(controller: self, message: "Se obtuvieron los comercios", seconds: 1)
-    }
-    
-    func gettingStoresFailed() {
-        showToast(controller: self, message: "Se produjo un error obteniendo los comercios", seconds: 1)
     }
 
     override func didReceiveMemoryWarning() {

@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  PaymentezSDK
-//
-//  Created by ftamburri on 09/11/2020.
-//  Copyright (c) 2020 ftamburri. All rights reserved.
-//
-
 import UIKit
 import PaymentezSDK
 
@@ -20,6 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         displayFirstStory()
         PaymentezSDK.shared.initialize(appCode: "PMTZ-SDK-LM-CO-SERVER", appKey: "S72CVybhzWRTMFJHnyLLMJS0cXXRpQ4")
+        
         return true
     }
     
