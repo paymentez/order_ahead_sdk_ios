@@ -14,29 +14,29 @@ public class PmzPaymentData {
     public var paymentReference: String?
     public var service: CLong?
     
-    init() {}
+    public init() {}
     
-    func setCurrency(currency: String) -> PmzPaymentData {
+    public func setCurrency(currency: String) -> PmzPaymentData {
         self.currency = currency
         return self
     }
     
-    func setAmount(amount: Double) -> PmzPaymentData {
+    public func setAmount(amount: Double) -> PmzPaymentData {
         self.amount = amount
         return self
     }
     
-    func setPaymentMethodReference(paymentMethodReference: String) -> PmzPaymentData {
+    public func setPaymentMethodReference(paymentMethodReference: String) -> PmzPaymentData {
         self.paymentMethodReference = paymentMethodReference
         return self
     }
     
-    func setPaymentReference(paymentReference: String) -> PmzPaymentData {
+    public func setPaymentReference(paymentReference: String) -> PmzPaymentData {
         self.paymentReference = paymentReference
         return self
     }
     
-    func setService(service: CLong) -> PmzPaymentData {
+    public func setService(service: CLong) -> PmzPaymentData {
         self.service = service
         return self
     }
