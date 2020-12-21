@@ -7,9 +7,16 @@
 
 import Foundation
 
+public class PmzFontNames {
+    static let SYSTEM = "System"
+    static let COURIER = "CourierNewPSMT"
+    static let ARIAL = "ArialMT"
+    static let TIMES = "TimesNewRomanPSMT"
+}
+
 public enum PmzFont {
     case SYSTEM
-    case COMIC_SANS
+    case COURIER
     case ARIAL
-    case SERIF
+    case TIMES
 }

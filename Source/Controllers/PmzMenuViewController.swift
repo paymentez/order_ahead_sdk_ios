@@ -37,6 +37,9 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let font = PaymentezSDK.shared.style?.getFontString(), font != PmzFontNames.SYSTEM {
+            UIFont.overrideInitialize()
+        }
         setPropperColors()
         nextButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goToCart)))
         

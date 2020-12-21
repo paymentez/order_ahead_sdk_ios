@@ -9,12 +9,12 @@ class PmzPayAndPlaceViewController: PaymentezViewController {
     @IBOutlet var paymentErrorText: UILabel!
     @IBOutlet var placeErrorText: UILabel!
     @IBOutlet var successText: UILabel!
+    @IBOutlet var processingText: UILabel!
     
     var order: PmzOrder?
     var paymentData: PmzPaymentData?
     var paymentsData: [PmzPaymentData]?
     var skipSummary: Bool = false
-    
     var multiPayment: Bool = false
     
     var currentPayment: PmzPaymentData?
@@ -27,6 +27,10 @@ class PmzPayAndPlaceViewController: PaymentezViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let font = PaymentezSDK.shared.style?.getFontString(), font != PmzFontNames.SYSTEM {
+            UIFont.overrideInitialize()
+            processingText.text = processingText.text
+        }
         if PaymentezSDK.shared.token != nil && PaymentezSDK.shared.token != "" {
             decideFlow()
         } else {

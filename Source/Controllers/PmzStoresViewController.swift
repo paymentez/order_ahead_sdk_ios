@@ -25,6 +25,9 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let font = PaymentezSDK.shared.style?.getFontString(), font != PmzFontNames.SYSTEM {
+            UIFont.overrideInitialize()
+        }
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "StoreCellView", bundle: Bundle(for: self.classForCoder)), forCellReuseIdentifier: "StoreCellView")

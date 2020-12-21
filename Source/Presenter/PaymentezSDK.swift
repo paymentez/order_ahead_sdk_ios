@@ -26,6 +26,7 @@ public class PaymentezSDK {
     var token: String?
     var buyer: PmzBuyer?
     var appOrderReference: String?
+    var sdkFontIsShowing: Bool = false
     
     var searchCallback: PmzSearchCallback?
     var paymentCheckerCallback: PmzPayAndPlaceCallback?
@@ -216,6 +217,7 @@ public class PaymentezSDK {
     }
     
     private func goBackToHostApp() {
+        UIFont.overrideToDefault()
         if(presentingVC != nil) {
             navController?.popToViewController(presentingVC!, animated: true)
         } else {

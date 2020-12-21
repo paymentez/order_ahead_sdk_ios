@@ -23,4 +23,7 @@ class ProductHeaderView: UIView {
         }
     }
     
+    func getAmountOfLines() -> Int {
+        return desc.calculateMaxLines()
+    }
 }

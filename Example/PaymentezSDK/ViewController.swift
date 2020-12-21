@@ -77,6 +77,7 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
         PaymentezSDK.shared
                 .setStyle(style: getStyle())
                 .startPayAndPlace(navigationController: navigationController!, order: PmzOrder.hardcoded(), paymentsData: PmzPaymentData.hardcodedList(), callback: self)
+        //performSegue(withIdentifier: "showTest", sender: self)
     }
     
     func getStyle() -> PmzStyle {
@@ -84,7 +85,7 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
             .setTextColor(textColorSelected!.color!)
             .setButtonBackgroundColor(buttonColorSelected!.color!)
             .setButtonTextColor(buttonTextColorSelected!.color!)
-            .setFont(PmzFont.SYSTEM)
+            .setFont(PmzFont.COURIER)
     }
     
     func getBuyer() -> PmzBuyer {

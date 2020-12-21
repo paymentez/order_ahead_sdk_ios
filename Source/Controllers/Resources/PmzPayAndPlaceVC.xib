@@ -23,6 +23,7 @@
                 <outlet property="paymentErrorText" destination="SrU-pJ-H05" id="eQj-fU-T3x"/>
                 <outlet property="placeErrorButton" destination="Fqm-D8-ZKf" id="d7L-lr-F82"/>
                 <outlet property="placeErrorText" destination="Q2I-E4-WaW" id="8sV-Rc-3WM"/>
+                <outlet property="processingText" destination="B0h-Og-OAh" id="nhg-va-YSP"/>
                 <outlet property="successButton" destination="rYL-6d-POh" id="KE2-XY-ktR"/>
                 <outlet property="successText" destination="pjd-gL-c2K" id="bms-Sp-mtF"/>
                 <outlet property="view" destination="7u4-wy-Lqi" id="H2e-rc-3Pa"/>
@@ -37,13 +38,13 @@
                     <rect key="frame" x="0.0" y="104" width="414" height="758"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tB8-dc-We5">
-                            <rect key="frame" x="161.5" y="353.5" width="91.5" height="51"/>
+                            <rect key="frame" x="154.5" y="353.5" width="105" height="51"/>
                             <subviews>
                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DgX-qs-Qze">
-                                    <rect key="frame" x="35.5" y="0.0" width="20" height="20"/>
+                                    <rect key="frame" x="42.5" y="0.0" width="20" height="20"/>
                                 </activityIndicatorView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Procesando" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0h-Og-OAh">
-                                    <rect key="frame" x="0.0" y="30" width="91.5" height="21"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Procesando..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0h-Og-OAh">
+                                    <rect key="frame" x="0.0" y="30" width="105" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>

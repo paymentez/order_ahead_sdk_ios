@@ -104,6 +104,9 @@
 		C6D5A4B4028B2C43380C9FA58BD5C8CA /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD19BB03EEC1750E695DF36CDE9F3ED /* Alamofire-dummy.m */; };
 		C95CB7DBF11778B246018ADFEA0715DB /* AlamofireImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 47812A4519D350500A6CCF24A2E1AE43 /* AlamofireImage-dummy.m */; };
 		CDF10163F26B974A258327F8FCD1DEB7 /* PaymentezSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 32ED93B5DD5BA1395651B5F749A645BD /* PaymentezSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF2D23D0259127A3004F23CE /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D23CF259127A3004F23CE /* UILabelExtension.swift */; };
+		CF2D23D1259127AA004F23CE /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D23CF259127A3004F23CE /* UILabelExtension.swift */; };
+		CF2D23D4259140AF004F23CE /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D23D22591405B004F23CE /* FontExtension.swift */; };
 		CF956CE4F1CAC1E3F2314CADD22F09E6 /* PmzSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC28DF19D232C7D2DBE5835E967DE2 /* PmzSummaryViewController.swift */; };
 		CF96CE482583C07F00A762DE /* PmzProductConfigurationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF96CE462583C07D00A762DE /* PmzProductConfigurationGroup.swift */; };
 		CF96CE4B2583C0CF00A762DE /* PmzConfigurationHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF96CE492583C0C900A762DE /* PmzConfigurationHolder.swift */; };
@@ -368,6 +371,8 @@
 		C6F132BBC5010EA39AE86F7A0B8C86D4 /* Pods-PaymentezSDK_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PaymentezSDK_Example-Info.plist"; sourceTree = "<group>"; };
 		C8498160B5D29EF2745E4D41F2D971B5 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD28F35BF7B7402FD01CB56C8D5D8472 /* PaymentezViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentezViewController.swift; sourceTree = "<group>"; };
+		CF2D23CF259127A3004F23CE /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		CF2D23D22591405B004F23CE /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		CF442F0A0E1D6AD175D4C1FE87D74B37 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		CF96CE462583C07D00A762DE /* PmzProductConfigurationGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PmzProductConfigurationGroup.swift; sourceTree = "<group>"; };
 		CF96CE492583C0C900A762DE /* PmzConfigurationHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PmzConfigurationHolder.swift; sourceTree = "<group>"; };
@@ -858,6 +863,8 @@
 				CFD45E132581530700F01462 /* CardView.swift */,
 				CFD45E16258156ED00F01462 /* UIViewControllerExtension.swift */,
 				CFDF3DEF258AA2CC00AD5060 /* PmzEncoder.swift */,
+				CF2D23CF259127A3004F23CE /* UILabelExtension.swift */,
+				CF2D23D22591405B004F23CE /* FontExtension.swift */,
 			);
 			name = Utils;
 			path = Source/Utils;
@@ -1265,6 +1272,7 @@
 				FC13FF300A9D565C27B3DB5C90918D78 /* PmzMenuVC.xib in Sources */,
 				CFDF3DE2258987CC00AD5060 /* ProductFooterView.swift in Sources */,
 				CFDF3DF1258AA32800AD5060 /* PmzEncoder.swift in Sources */,
+				CF2D23D1259127AA004F23CE /* UILabelExtension.swift in Sources */,
 				618C9C4E8B01FE886FFF22FAAE9CF09D /* PmzMenuViewController.swift in Sources */,
 				5C913BA34AB6B5BD4B4021B5F26A24DB /* PmzOrder.swift in Sources */,
 				01DCE3E8EB9C16ECFCD03970D224B874 /* PmzPayAndPlaceVC.xib in Sources */,
@@ -1287,6 +1295,7 @@
 				FD3605E10CD952E8DDF5CA3C4C8F3118 /* PmzStore.swift in Sources */,
 				CFDF3DE5258A763C00AD5060 /* PmzCartViewController.swift in Sources */,
 				9E7260E34911ECBB9FB0628AE2AFBAFF /* PmzStoresVC.xib in Sources */,
+				CF2D23D4259140AF004F23CE /* FontExtension.swift in Sources */,
 				CFDF3E02258C0B7400AD5060 /* SummaryHeaderView.swift in Sources */,
 				80C8418F3EF3399D923F9C090F2BA5C0 /* PmzStoresViewController.swift in Sources */,
 				CF96CE5A25840C4E00A762DE /* TitleCellView.swift in Sources */,
@@ -1333,6 +1342,7 @@
 				66B26C6CAE737EC21F4BA1F1851B69C5 /* Result+Alamofire.swift in Sources */,
 				9FED70D1E1FBFB80E974E999EF732258 /* RetryPolicy.swift in Sources */,
 				47FDBBBD2704901588C3A7C56BBC502D /* ServerTrustEvaluation.swift in Sources */,
+				CF2D23D0259127A3004F23CE /* UILabelExtension.swift in Sources */,
 				6AE407A4FB6C3D6ADD862CC6E3067A17 /* Session.swift in Sources */,
 				381FF05F8B4F611EE9C2FDBE4457BB89 /* SessionDelegate.swift in Sources */,
 				212EDC48B68107BEA9247F3464CE696E /* StringEncoding+Alamofire.swift in Sources */,

@@ -54,11 +54,11 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
         let headerView = PaymentezSDK.shared.getBundle()?.loadNibNamed("ProductHeaderView", owner: self, options: nil)!.first as! ProductHeaderView
         headerView.configure(product: product)
         tableView.tableHeaderView = headerView
-        // 3.
+        tableView.tableHeaderView!.frame.size.height = calculateHeaderHeight(headerView.getAmountOfLines())
+        
         headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
         headerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
         headerView.topAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
-        // 4.
         self.tableView.tableHeaderView?.layoutIfNeeded()
         self.tableView.tableHeaderView = self.tableView.tableHeaderView
         
@@ -69,6 +69,7 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
             footerView!.setCurrentPrice(price: price)
         }
         tableView.tableFooterView = footerView
+        tableView.tableFooterView!.frame.size.height = calculateFooterHeight()
         footerView!.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
         footerView!.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
         footerView!.topAnchor.constraint(equalTo: self.tableView.bottomAnchor).isActive = true
@@ -77,6 +78,24 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
         self.tableView.tableFooterView = self.tableView.tableFooterView
         
         tableView.reloadData()
+    }
+    
+    func calculateHeaderHeight(_ linesAmount: Int) -> CGFloat {
+        let height = UIScreen.main.bounds.height
+        if height < 700 {
+            return CGFloat(330 + linesAmount * 25)
+        } else {
+            return CGFloat(170 + linesAmount * 15)
+        }
+    }
+    
+    func calculateFooterHeight() -> CGFloat {
+        let height = UIScreen.main.bounds.height
+        if height < 700 {
+            return 300
+        } else {
+            return 120
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

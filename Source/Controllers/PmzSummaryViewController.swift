@@ -22,6 +22,9 @@ class PmzSummaryViewController: PaymentezViewController, UITableViewDelegate, UI
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let font = PaymentezSDK.shared.style?.getFontString(), font != PmzFontNames.SYSTEM {
+            UIFont.overrideInitialize()
+        }
         store = order?.store
         nextButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.finishFlow)))
         setTableView()
@@ -37,6 +40,8 @@ class PmzSummaryViewController: PaymentezViewController, UITableViewDelegate, UI
         let headerView = PaymentezSDK.shared.getBundle()?.loadNibNamed("SummaryHeaderView", owner: self, options: nil)!.first as! SummaryHeaderView
         headerView.configure(store: store)
         tableView.tableHeaderView = headerView
+        tableView.tableHeaderView!.frame.size.height = calculateHeaderHeight()
+        
         headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
         headerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
         headerView.topAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
@@ -47,11 +52,31 @@ class PmzSummaryViewController: PaymentezViewController, UITableViewDelegate, UI
         footerView.initialize()
         footerView.setPrice(price: calculatePrice())
         tableView.tableFooterView = footerView
+        tableView.tableFooterView!.frame.size.height = calculateFooterHeight()
+        
         footerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
         footerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
         footerView.topAnchor.constraint(equalTo: self.tableView.bottomAnchor).isActive = true
         self.tableView.tableFooterView?.layoutIfNeeded()
         self.tableView.tableFooterView = self.tableView.tableFooterView
+    }
+    
+    func calculateHeaderHeight() -> CGFloat {
+        let height = UIScreen.main.bounds.height
+        if height < 700 {
+            return 530
+        } else {
+            return 400
+        }
+    }
+    
+    func calculateFooterHeight() -> CGFloat {
+        let height = UIScreen.main.bounds.height
+        if height < 700 {
+            return 200
+        } else {
+            return 60
+        }
     }
    
     func calculatePrice() -> Double {

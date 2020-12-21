@@ -40,4 +40,17 @@ public class PmzStyle {
         self.font = font
         return self
     }
+    
+    func getFontString() -> String{
+        switch font {
+        case PmzFont.ARIAL:
+            return PmzFontNames.ARIAL
+        case PmzFont.TIMES:
+            return PmzFontNames.TIMES
+        case PmzFont.COURIER:
+            return PmzFontNames.COURIER
+        default:
+            return PmzFontNames.SYSTEM
+        }
+    }
 }

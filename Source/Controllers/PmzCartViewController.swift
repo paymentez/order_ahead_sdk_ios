@@ -45,11 +45,10 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
         headerView.configure(store: store)
         headerView.delegate = self
         tableView.tableHeaderView = headerView
-        // 3.
+        tableView.tableHeaderView!.frame.size.height = calculateHeaderHeight()
         headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
         headerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
         headerView.topAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
-        // 4.
         self.tableView.tableHeaderView?.layoutIfNeeded()
         self.tableView.tableHeaderView = self.tableView.tableHeaderView
         
@@ -57,13 +56,30 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
         footerView?.initialize()
         footerView!.setPrice(price: calculatePrice())
         tableView.tableFooterView = footerView
-        // 3.
+        tableView.tableFooterView!.frame.size.height = calculateFooterHeight()
         footerView!.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
         footerView!.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
         footerView!.topAnchor.constraint(equalTo: self.tableView.bottomAnchor).isActive = true
-        // 4.
         self.tableView.tableFooterView?.layoutIfNeeded()
         self.tableView.tableFooterView = self.tableView.tableFooterView
+    }
+    
+    func calculateHeaderHeight() -> CGFloat {
+        let height = UIScreen.main.bounds.height
+        if height < 700 {
+            return CGFloat(320)
+        } else {
+            return 150
+        }
+    }
+    
+    func calculateFooterHeight() -> CGFloat {
+        let height = UIScreen.main.bounds.height
+        if height < 700 {
+            return 350
+        } else {
+            return 180
+        }
     }
     
     func calculatePrice() -> Double {

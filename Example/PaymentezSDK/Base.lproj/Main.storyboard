@@ -343,11 +343,43 @@
                         <outlet property="summaryButton" destination="bKI-Ik-uhQ" id="EUe-kK-NCl"/>
                         <outlet property="textColorInput" destination="qSt-9P-rie" id="LeX-ZS-8mv"/>
                         <outlet property="textColorShower" destination="SHI-ky-aal" id="IDV-ml-erL"/>
+                        <segue destination="iI1-QB-ZJb" kind="show" identifier="showTest" id="aMH-wE-FZS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="345" y="133"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="llm-6H-VBi">
+            <objects>
+                <viewController id="iI1-QB-ZJb" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pZm-DB-l3D"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pyi-1z-3mN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iNF-p2-srm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7V-Lq-Uod">
+                                <rect key="frame" x="153.5" y="313.5" width="68" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="I7V-Lq-Uod" firstAttribute="centerX" secondItem="iNF-p2-srm" secondAttribute="centerX" id="TYz-I1-HUj"/>
+                            <constraint firstItem="I7V-Lq-Uod" firstAttribute="centerY" secondItem="iNF-p2-srm" secondAttribute="centerY" id="lob-Je-RWv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="eF8-Ck-aEi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kxA-S4-tzo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1261.5999999999999" y="167.76611694152925"/>
         </scene>
     </scenes>
     <resources>
