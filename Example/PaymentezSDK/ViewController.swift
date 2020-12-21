@@ -85,7 +85,7 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
             .setTextColor(textColorSelected!.color!)
             .setButtonBackgroundColor(buttonColorSelected!.color!)
             .setButtonTextColor(buttonTextColorSelected!.color!)
-            .setFont(PmzFont.COURIER)
+            .setFont(PmzFont.SYSTEM)
     }
     
     func getBuyer() -> PmzBuyer {
