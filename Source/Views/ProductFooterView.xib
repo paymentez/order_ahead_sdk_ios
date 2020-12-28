@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -56,7 +55,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="product_amount_gray"/>
+                            <color key="backgroundColor" red="0.94117647058823528" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="WEM-4G-OwQ" secondAttribute="bottom" constant="5" id="0cW-he-27t"/>
                                 <constraint firstAttribute="trailing" secondItem="WEM-4G-OwQ" secondAttribute="trailing" constant="10" id="Bbl-eY-kSC"/>
@@ -152,8 +151,5 @@
     <resources>
         <image name="product_minus" width="21.333333969116211" height="21.333333969116211"/>
         <image name="product_plus" width="21.333333969116211" height="21.333333969116211"/>
-        <namedColor name="product_amount_gray">
-            <color red="0.94117647058823528" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

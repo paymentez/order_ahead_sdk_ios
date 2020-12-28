@@ -309,10 +309,10 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
             if let buttonColor = PaymentezSDK.shared.style?.buttonBackgroundColor {
                 nextButtonBackground?.backgroundColor = buttonColor
             } else {
-                nextButtonBackground?.backgroundColor = UIColor(named: "orange")
+                nextButtonBackground?.backgroundColor = ColorCompat.getOrange()
             }
         } else {
-            nextButtonBackground?.backgroundColor = UIColor(named: "disabled_button", in: PaymentezSDK.shared.getBundle(), compatibleWith: nil)
+            nextButtonBackground?.backgroundColor = ColorCompat.getDisabledButtonColor()
         }
     }
     

@@ -46,9 +46,7 @@ class ProductConfigurationItemCellView: UITableViewCell {
             }
         } else {
             checkbox.image = UIImage(named: "checkbox_unchecked", in: PaymentezSDK.shared.getBundle(), compatibleWith: nil)
-            if let grayColor = UIColor(named: "unselected_gray", in: PaymentezSDK.shared.getBundle(), compatibleWith: nil) {
-                checkbox.tintColor = grayColor
-            }
+            checkbox.tintColor = ColorCompat.getUnselectedGray()
         }
     }
 }

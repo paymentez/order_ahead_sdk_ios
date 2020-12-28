@@ -9,6 +9,7 @@ import Foundation
 
 class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITableViewDataSource, CartHeaderDelegate {
     
+    
     static let PMZ_CART_VC = "PmzCartVC"
     
     @IBOutlet var tableView: UITableView!
@@ -111,15 +112,30 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
         return 0
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tryToRemoveItem(indexPath: indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "\u{267A}") { (action, indexPath) in
+            self.tryToRemoveItem(indexPath: indexPath)
+        }
+        delete.backgroundColor = ColorCompat.getRemoveItemBackground()
+
+        return [delete]
+    }
+    
+    /*func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: "", handler: {a,b,c in
             self.tryToRemoveItem(indexPath: indexPath)
         })
 
         deleteAction.image = UIImage(named: "remove_item_bin", in: PaymentezSDK.shared.getBundle(), compatibleWith: nil)
-        deleteAction.backgroundColor = UIColor(named: "remove_item_background", in: PaymentezSDK.shared.getBundle(), compatibleWith: nil)
+        deleteAction.backgroundColor = ColorCompat.getRemoveItemBackground()
         return UISwipeActionsConfiguration(actions: [deleteAction])
-    }
+    }*/
     
     func tryToRemoveItem(indexPath: IndexPath) {
         var message = "¿Seguro que desea borrar el item?"
