@@ -39,6 +39,7 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'AlamofireImage', '~> 4.1'
+  #s.dependency 'AlamofireImage', '~> 4.1'
+  s.dependency 'ImageLoader', '~> 0.15.0'
   s.dependency 'XLPagerTabStrip', '~> 9.0'
 end

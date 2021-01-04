@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import AlamofireImage
+import ImageLoader
 
 class PmzImageUtils {
     
@@ -14,14 +14,10 @@ class PmzImageUtils {
         if let iUrl = imageUrl {
             let url = URL(string: iUrl)!
             let placeholderImage = UIImage(named: "placeholder")
-            let filter = AspectScaledToFillSizeWithRoundedCornersFilter(size: imageView.frame.size,radius: 0)
+            imageView.image = placeholderImage
+            //let filter = AspectScaledToFillSizeWithRoundedCornersFilter(size: imageView.frame.size,radius: 0)
                 
-            imageView.af.setImage(
-                withURL: url,
-                placeholderImage: placeholderImage,
-                filter: filter,
-                imageTransition: .crossDissolve(0.2)
-            )
+            imageView.load.request(with: url)
         }
     }
 }

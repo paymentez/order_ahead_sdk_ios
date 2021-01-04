@@ -1,6 +1,6 @@
 {
   "name": "PaymentezSDK",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "summary": "Paymentez Order Ahead SDK",
   "description": "'Paymentez Order Ahead SDK'",
   "homepage": "https://github.com/paymentez/order_ahead_sdk_ios",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/paymentez/order_ahead_sdk_ios",
-    "tag": "0.3.5"
+    "tag": "0.3.6"
   },
   "platforms": {
     "ios": "10.3"
@@ -22,8 +22,8 @@
   "resources": "Source/Controllers/Resources/**/*.xcassets",
   "swift_versions": "5.0",
   "dependencies": {
-    "AlamofireImage": [
-      "~> 4.1"
+    "ImageLoader": [
+      "~> 0.15.0"
     ],
     "XLPagerTabStrip": [
       "~> 9.0"
