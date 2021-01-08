@@ -108,6 +108,7 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     func setPropperColors() {
         searchBar.backgroundImage = UIImage()
         if let buttonColor = PaymentezSDK.shared.style?.buttonBackgroundColor {
+            changeStatusBarColor(color: buttonColor)
             headerBar?.backgroundColor = buttonColor
             searchBar.backgroundColor = buttonColor
         }

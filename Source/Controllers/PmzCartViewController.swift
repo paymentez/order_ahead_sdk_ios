@@ -9,7 +9,6 @@ import Foundation
 
 class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITableViewDataSource, CartHeaderDelegate {
     
-    
     static let PMZ_CART_VC = "PmzCartVC"
     
     @IBOutlet var tableView: UITableView!
@@ -37,65 +36,22 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
     
     func setTableView() {
         tableView.register(UINib(nibName: "CartItemCellView", bundle: Bundle(for: self.classForCoder)), forCellReuseIdentifier: "CartItemCellView")
+        tableView.register(UINib(nibName: "CartHeaderView", bundle: Bundle(for: self.classForCoder)), forCellReuseIdentifier: "CartHeaderView")
+        tableView.register(UINib(nibName: "CartFooterView", bundle: Bundle(for: self.classForCoder)), forCellReuseIdentifier: "CartFooterView")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 404
-        
-        let headerView = PaymentezSDK.shared.getBundle()?.loadNibNamed("CartHeaderView", owner: self, options: nil)!.first as! CartHeaderView
-        headerView.configure(store: store)
-        headerView.delegate = self
-        tableView.tableHeaderView = headerView
-        tableView.tableHeaderView!.frame.size.height = calculateHeaderHeight()
-        headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
-        headerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
-        headerView.topAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
-        self.tableView.tableHeaderView?.layoutIfNeeded()
-        self.tableView.tableHeaderView = self.tableView.tableHeaderView
-        
-        footerView = PaymentezSDK.shared.getBundle()?.loadNibNamed("CartFooterView", owner: self, options: nil)!.first as? CartFooterView
-        footerView?.initialize()
-        footerView!.setPrice(price: calculatePrice())
-        tableView.tableFooterView = footerView
-        tableView.tableFooterView!.frame.size.height = calculateFooterHeight()
-        footerView!.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
-        footerView!.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
-        footerView!.topAnchor.constraint(equalTo: self.tableView.bottomAnchor).isActive = true
-        self.tableView.tableFooterView?.layoutIfNeeded()
-        self.tableView.tableFooterView = self.tableView.tableFooterView
-    }
-    
-    func calculateHeaderHeight() -> CGFloat {
-        let height = UIScreen.main.bounds.height
-        if height < 700 {
-            return CGFloat(320)
-        } else {
-            return 150
-        }
-    }
-    
-    func calculateFooterHeight() -> CGFloat {
-        let height = UIScreen.main.bounds.height
-        if height < 700 {
-            return 350
-        } else {
-            return 180
-        }
     }
     
     func calculatePrice() -> Double {
         var result: Double = 0
         if let items = order?.items {
             for item in items {
-                var amount: Double = 1
-                if let realAmount = item.quantity {
-                    amount = Double(realAmount)
-                }
-                var priceToMultiply: Double = 0
+                var price: Double = 0
                 if let pricePerUnit = item.totalAmount {
-                    priceToMultiply = pricePerUnit
+                    price = pricePerUnit
                 }
-                result += priceToMultiply * amount
+                result += price
             }
         }
         return result
@@ -106,10 +62,14 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return getCount()
+    }
+    
+    func getCount() -> Int {
         if let items = order?.items {
-            return items.count
+            return items.count + 2
         }
-        return 0
+        return 2
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -119,34 +79,28 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "\u{267A}") { (action, indexPath) in
-            self.tryToRemoveItem(indexPath: indexPath)
+        if indexPath.row > 0 && indexPath.row < getCount() - 1 {
+            
+            let delete = UITableViewRowAction(style: .destructive, title: "\u{267A}") { (action, indexPath) in
+                self.tryToRemoveItem(indexPath: indexPath)
+            }
+            delete.backgroundColor = ColorCompat.getRemoveItemBackground()
+
+            return [delete]
         }
-        delete.backgroundColor = ColorCompat.getRemoveItemBackground()
-
-        return [delete]
+        return []
     }
-    
-    /*func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .normal, title: "", handler: {a,b,c in
-            self.tryToRemoveItem(indexPath: indexPath)
-        })
-
-        deleteAction.image = UIImage(named: "remove_item_bin", in: PaymentezSDK.shared.getBundle(), compatibleWith: nil)
-        deleteAction.backgroundColor = ColorCompat.getRemoveItemBackground()
-        return UISwipeActionsConfiguration(actions: [deleteAction])
-    }*/
     
     func tryToRemoveItem(indexPath: IndexPath) {
         var message = "¿Seguro que desea borrar el item?"
-        if let productName = self.order?.items?[indexPath.row].productName {
+        if let productName = self.order?.items?[indexPath.row - 1].productName {
             message = "¿Seguro que desea borrar el item \(productName)?"
         }
         let alert = UIAlertController(title: "Borrar item", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: {(alert: UIAlertAction!) in
-            let itemToRemove = self.order!.items![indexPath.row]
+            let itemToRemove = self.order!.items![indexPath.row - 1]
             self.removeItem(itemToRemove)
-            self.order!.items!.remove(at: indexPath.row)
+            self.order!.items!.remove(at: indexPath.row - 1)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             self.refreshPrice()
         }))
@@ -170,22 +124,32 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
         })
     }
     
-    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            order!.items!.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            refreshPrice()
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
-    }*/
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CartHeaderView") as! CartHeaderView
+            cell.configure(store: store)
+            return cell
+        }
+        if let size = order?.items?.count {
+            if indexPath.row - 1 == size {
+                return getFooterView()
+            }
+        } else {
+            return getFooterView()
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartItemCellView") as! CartItemCellView
-        if let item = order?.items?[indexPath.row] {
+        if let item = order?.items?[indexPath.row - 1] {
             cell.configure(item: item)
         }
-        //cell.delegate = self
+        return cell
+    }
+    
+    func getFooterView() -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CartFooterView") as! CartFooterView
+        cell.initialize()
+        cell.setPrice(price: calculatePrice())
+        footerView = cell
         return cell
     }
     

@@ -19,15 +19,11 @@ class CartItemCellView: UITableViewCell {
         PmzImageUtils.loadImage(item.imageUrl, imageView: img)
         name.text = item.productName
         content.text = generateContent(configs: item.configurations)
-        var amount: Double = 1
-        if let realAmount = item.quantity {
-            amount = Double(realAmount)
+        var priceToDisplay: Double = 0
+        if let totalPrice = item.totalAmount {
+            priceToDisplay = totalPrice
         }
-        var priceToMultiply: Double = 0
-        if let pricePerUnit = item.totalAmount {
-            priceToMultiply = pricePerUnit
-        }
-        price.text = CurrencyUtils.getPrice(priceToMultiply * amount)
+        price.text = CurrencyUtils.getPrice(priceToDisplay)
     }
     
     func generateContent(configs: [PmzConfiguration]?) -> String {

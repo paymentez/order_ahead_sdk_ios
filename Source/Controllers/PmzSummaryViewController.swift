@@ -22,6 +22,7 @@ class PmzSummaryViewController: PaymentezViewController, UITableViewDelegate, UI
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setColors()
         if let font = PaymentezSDK.shared.style?.getFontString(), font != PmzFontNames.SYSTEM {
             UIFont.overrideInitialize()
         }
@@ -32,50 +33,17 @@ class PmzSummaryViewController: PaymentezViewController, UITableViewDelegate, UI
    
     func setTableView() {
         tableView.register(UINib(nibName: "CartItemCellView", bundle: Bundle(for: self.classForCoder)), forCellReuseIdentifier: "CartItemCellView")
+        tableView.register(UINib(nibName: "SummaryFooterView", bundle: Bundle(for: self.classForCoder)), forCellReuseIdentifier: "SummaryFooterView")
+        tableView.register(UINib(nibName: "SummaryHeaderView", bundle: Bundle(for: self.classForCoder)), forCellReuseIdentifier: "SummaryHeaderView")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 404
-  
-        let headerView = PaymentezSDK.shared.getBundle()?.loadNibNamed("SummaryHeaderView", owner: self, options: nil)!.first as! SummaryHeaderView
-        headerView.configure(store: store)
-        tableView.tableHeaderView = headerView
-        tableView.tableHeaderView!.frame.size.height = calculateHeaderHeight()
-        
-        headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
-        headerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
-        headerView.topAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
-        self.tableView.tableHeaderView?.layoutIfNeeded()
-        self.tableView.tableHeaderView = self.tableView.tableHeaderView
- 
-        let footerView = PaymentezSDK.shared.getBundle()?.loadNibNamed("SummaryFooterView", owner: self, options: nil)!.first as! SummaryFooterView
-        footerView.initialize()
-        footerView.setPrice(price: calculatePrice())
-        tableView.tableFooterView = footerView
-        tableView.tableFooterView!.frame.size.height = calculateFooterHeight()
-        
-        footerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
-        footerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
-        footerView.topAnchor.constraint(equalTo: self.tableView.bottomAnchor).isActive = true
-        self.tableView.tableFooterView?.layoutIfNeeded()
-        self.tableView.tableFooterView = self.tableView.tableFooterView
     }
     
-    func calculateHeaderHeight() -> CGFloat {
-        let height = UIScreen.main.bounds.height
-        if height < 700 {
-            return 530
-        } else {
-            return 400
-        }
-    }
-    
-    func calculateFooterHeight() -> CGFloat {
-        let height = UIScreen.main.bounds.height
-        if height < 700 {
-            return 200
-        } else {
-            return 60
+    func setColors() {
+        if let buttonColor = PaymentezSDK.shared.style?.buttonBackgroundColor {
+            changeStatusBarColor(color: buttonColor)
         }
     }
    
@@ -99,17 +67,35 @@ class PmzSummaryViewController: PaymentezViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let items = order?.items {
-            return items.count
+            return items.count + 2
         }
-        return 0
+        return 2
     }
    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryHeaderView") as! SummaryHeaderView
+            cell.configure(store: store)
+            return cell
+        }
+        if let count = order?.items?.count {
+            if indexPath.row - 1 == count {
+                return getFooterCell()
+            }
+        } else {
+            return getFooterCell()
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartItemCellView") as! CartItemCellView
-        if let item = order?.items?[indexPath.row] {
+        if let item = order?.items?[indexPath.row - 1] {
             cell.configure(item: item)
         }
-        //cell.delegate = self
+        return cell
+    }
+    
+    func getFooterCell() -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryFooterView") as! SummaryFooterView
+        cell.initialize()
+        cell.setPrice(price: calculatePrice())
         return cell
     }
    

@@ -11,7 +11,7 @@ protocol CartHeaderDelegate {
     func onKeepBuyingPressed()
 }
 
-class CartHeaderView: UIView {
+class CartHeaderView: UITableViewCell {
     
     @IBOutlet var storeName: UILabel!
     @IBOutlet var storeDesc: UILabel!

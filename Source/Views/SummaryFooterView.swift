@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SummaryFooterView: UIView {
+class SummaryFooterView: UITableViewCell {
     
     @IBOutlet var totalPaymentTitle: UILabel!
     @IBOutlet var totalPayment: UILabel!

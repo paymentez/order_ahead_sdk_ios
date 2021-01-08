@@ -52,4 +52,19 @@ extension UIViewController {
         })
     }
     
+    func changeStatusBarColor(color: UIColor) {
+        let sharedApplication = UIApplication.shared
+        sharedApplication.delegate?.window??.tintColor = color
+
+        if #available(iOS 13.0, *) {
+              let statusBar = UIView(frame: (sharedApplication.delegate?.window??.windowScene?.statusBarManager?.statusBarFrame)!)
+              statusBar.backgroundColor = color
+              sharedApplication.delegate?.window??.addSubview(statusBar)
+          } else {
+              guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else {
+                      return
+                  }
+              statusBarView.backgroundColor = color
+        }
+    }
 }

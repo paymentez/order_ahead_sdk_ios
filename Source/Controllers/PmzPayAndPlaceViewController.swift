@@ -27,6 +27,7 @@ class PmzPayAndPlaceViewController: PaymentezViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setColors()
         if let font = PaymentezSDK.shared.style?.getFontString(), font != PmzFontNames.SYSTEM {
             UIFont.overrideInitialize()
             processingText.text = processingText.text
@@ -35,6 +36,12 @@ class PmzPayAndPlaceViewController: PaymentezViewController {
             decideFlow()
         } else {
             startSession()
+        }
+    }
+    
+    func setColors() {
+        if let buttonColor = PaymentezSDK.shared.style?.buttonBackgroundColor {
+            changeStatusBarColor(color: buttonColor)
         }
     }
     

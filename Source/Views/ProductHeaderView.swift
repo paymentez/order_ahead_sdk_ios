@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ProductHeaderView: UIView {
+class ProductHeaderView: UITableViewCell {
     
     @IBOutlet var productImage: UIImageView!
     @IBOutlet var name: UILabel!
@@ -17,7 +17,11 @@ class ProductHeaderView: UIView {
     func configure(product: PmzProduct?) {
         if let product = product {
             name.text = product.name
-            desc.text = product.description
+            if product.description != "" {
+                desc.text = product.description
+            } else {
+                desc.text = " "
+            }
             price.text = CurrencyUtils.getPrice(product.currentPrice)
             PmzImageUtils.loadImage(product.imageUrl, imageView: productImage)
         }

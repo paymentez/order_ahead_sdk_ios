@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SummaryHeaderView: UIView {
+class SummaryHeaderView: UITableViewCell {
     
     @IBOutlet var firstLine: UILabel!
     @IBOutlet var secondLine: UILabel!

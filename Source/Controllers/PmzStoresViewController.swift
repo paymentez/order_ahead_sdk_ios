@@ -38,6 +38,9 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
     
     func setSearchBar() {
         searchBar.delegate = self
+        if filter != "" {
+            searchBar.text = filter
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -47,6 +50,7 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
     func setColors() {
         searchBar.backgroundImage = UIImage()
         if let buttonColor = PaymentezSDK.shared.style?.buttonBackgroundColor {
+            changeStatusBarColor(color: buttonColor)
             searchBar.backgroundColor = buttonColor
         }
         if let textColor = PaymentezSDK.shared.style?.buttonTextColor {
@@ -68,6 +72,7 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
     @IBAction func backDidPressed(_ sender: Any) {
         if searchBar.isHidden {
            self.navigationController?.popViewController(animated: true)
+            chnageStatusBarToOriginal()
            PaymentezSDK.shared.onSearchCancelled()
         } else {
            searchBar.text = ""
@@ -137,7 +142,7 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
             guard let self = self else { return }
             self.dismissPmzLoading()
             self.stores = stores
-            self.doFilter("")
+            self.doFilter(self.filter)
             self.tableView.reloadData()
             }, failure: { [weak self] (error) in
                 guard let self = self else { return }

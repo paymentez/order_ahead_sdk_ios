@@ -11,7 +11,7 @@ protocol ProductFooterDelegate {
     func onQuantityChanged(quantity: Int)
 }
 
-class ProductFooterView: UIView {
+class ProductFooterView: UITableViewCell {
     @IBOutlet var quantityTitle: UILabel!
     @IBOutlet var totalTitle: UILabel!
     @IBOutlet var totalPrice: UILabel!
@@ -45,6 +45,9 @@ class ProductFooterView: UIView {
     @objc func didTapPlusButton() {
         counter += 1
         amount.text = String(counter)
+        if delegate != nil {
+           delegate?.onQuantityChanged(quantity: counter)
+        }
         refresh()
     }
     
@@ -52,15 +55,19 @@ class ProductFooterView: UIView {
         if counter > 1 {
             counter -= 1
             amount.text = String(counter)
+            if delegate != nil {
+               delegate?.onQuantityChanged(quantity: counter)
+            }
             refresh()
         }
     }
     
+    func currentAmount(amount: Int) {
+        self.counter = amount
+    }
+    
     func setCurrentPrice(price: Double) {
         self.currentPrice = price
-        if delegate != nil {
-            delegate?.onQuantityChanged(quantity: counter)
-        }
         refresh()
     }
     

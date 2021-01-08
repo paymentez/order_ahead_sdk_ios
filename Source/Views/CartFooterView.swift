@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CartFooterView: UIView, UITextViewDelegate {
+class CartFooterView: UITableViewCell, UITextViewDelegate {
     
     static let placeholder = "Agregar comentarios del pedido"
     

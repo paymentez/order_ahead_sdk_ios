@@ -16,6 +16,12 @@ class PaymentezViewController: UIViewController {
         //headerBar.addBottomShadow()
     }
     
+    func chnageStatusBarToOriginal() {
+        if let color = PaymentezSDK.shared.hostStatusBarColor {
+            changeStatusBarColor(color: color)
+        }
+    }
+    
     func setPropperColors() {
         if let bgColor = PaymentezSDK.shared.style?.backgroundColor {
             mainView?.backgroundColor = bgColor

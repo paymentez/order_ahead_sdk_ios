@@ -22,6 +22,9 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
     
     var delegate: PmzProductVCDelegate?
     
+    var currentPrice: Double = 0
+    var currentAmount: Int = 1
+    
     init() {
         self.organizer = PmzProductOrganizer()
         super.init(nibName: PmzProductViewController.PMZ_PRODUCT_VC, bundle: PaymentezSDK.shared.getBundle())
@@ -34,7 +37,9 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         nextButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goToFourthPage)))
-        
+        if let currentPrice = product?.currentPrice {
+            self.currentPrice = currentPrice
+        }
         organizer.setProduct(product: product)
         setTableView()
         item = PmzItem(product: product!, orderId: orderId!)
@@ -42,68 +47,39 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
     
     func onQuantityChanged(quantity: Int) {
         item?.quantity = quantity
+        currentAmount = quantity
     }
     
     func setTableView() {
         tableView.register(UINib(nibName: "TitleCellView", bundle: Bundle(for: self.classForCoder)), forCellReuseIdentifier: "TitleCellView")
         tableView.register(UINib(nibName: "ProductConfigurationItemCellView", bundle: Bundle(for: self.classForCoder)), forCellReuseIdentifier: "ProductConfigurationItemCellView")
+        tableView.register(UINib(nibName: "ProductHeaderView", bundle: Bundle(for: self.classForCoder)), forCellReuseIdentifier: "ProductHeaderView")
+        tableView.register(UINib(nibName: "ProductFooterView", bundle: Bundle(for: self.classForCoder)), forCellReuseIdentifier: "ProductFooterView")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-        
-        let headerView = PaymentezSDK.shared.getBundle()?.loadNibNamed("ProductHeaderView", owner: self, options: nil)!.first as! ProductHeaderView
-        headerView.configure(product: product)
-        tableView.tableHeaderView = headerView
-        tableView.tableHeaderView!.frame.size.height = calculateHeaderHeight(headerView.getAmountOfLines())
-        
-        headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
-        headerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
-        headerView.topAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
-        self.tableView.tableHeaderView?.layoutIfNeeded()
-        self.tableView.tableHeaderView = self.tableView.tableHeaderView
-        
-        footerView = PaymentezSDK.shared.getBundle()?.loadNibNamed("ProductFooterView", owner: self, options: nil)!.first as? ProductFooterView
-        footerView?.initialize()
-        footerView?.delegate = self
-        if let price = product?.currentPrice {
-            footerView!.setCurrentPrice(price: price)
-        }
-        tableView.tableFooterView = footerView
-        tableView.tableFooterView!.frame.size.height = calculateFooterHeight()
-        footerView!.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
-        footerView!.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
-        footerView!.topAnchor.constraint(equalTo: self.tableView.bottomAnchor).isActive = true
-        // 4.
-        self.tableView.tableFooterView?.layoutIfNeeded()
-        self.tableView.tableFooterView = self.tableView.tableFooterView
-        
-        tableView.reloadData()
-    }
-    
-    func calculateHeaderHeight(_ linesAmount: Int) -> CGFloat {
-        let height = UIScreen.main.bounds.height
-        if height < 700 {
-            return CGFloat(330 + linesAmount * 25)
-        } else {
-            return CGFloat(170 + linesAmount * 15)
-        }
-    }
-    
-    func calculateFooterHeight() -> CGFloat {
-        let height = UIScreen.main.bounds.height
-        if height < 700 {
-            return 300
-        } else {
-            return 120
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return organizer.size()
+        return organizer.size() + 2
     }
    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = organizer.getItem(position: indexPath.row)
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProductHeaderView") as! ProductHeaderView
+            cell.configure(product: product)
+            return cell
+        }
+        if indexPath.row - 1 == organizer.size() {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProductFooterView") as! ProductFooterView
+            cell.initialize()
+            cell.delegate = self
+            self.footerView = cell
+            cell.currentAmount(amount: currentAmount)
+            cell.setCurrentPrice(price: currentPrice + organizer.measureExtras())
+            return cell
+        }
+        let item = organizer.getItem(position: indexPath.row - 1)
         if let type = item?.getType(), type == PmzProductViewController.ITEM_INDEX {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProductConfigurationItemCellView") as! ProductConfigurationItemCellView
             cell.configure(item: item as! PmzProductConfiguration, position: indexPath.row)

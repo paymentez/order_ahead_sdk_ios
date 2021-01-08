@@ -27,6 +27,7 @@ public class PaymentezSDK {
     var buyer: PmzBuyer?
     var appOrderReference: String?
     var sdkFontIsShowing: Bool = false
+    var hostStatusBarColor: UIColor?
     
     var searchCallback: PmzSearchCallback?
     var paymentCheckerCallback: PmzPayAndPlaceCallback?
@@ -42,6 +43,18 @@ public class PaymentezSDK {
     public func setStyle(style: PmzStyle) -> PaymentezSDK {
         self.style = style
         return self
+    }
+    
+    func getCurrentStatusBarColor() {
+        let sharedApplication = UIApplication.shared
+        if #available(iOS 13.0, *) {
+              hostStatusBarColor = sharedApplication.delegate?.window??.tintColor
+          } else {
+              guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else {
+                      return
+                  }
+              hostStatusBarColor = statusBarView.backgroundColor
+        }
     }
     
     func isInitialized() -> Bool {
@@ -74,6 +87,7 @@ public class PaymentezSDK {
     
     public func startSearch(navigationController: UINavigationController, buyer: PmzBuyer, appOrderReference: String, callback: PmzSearchCallback) {
         if isInitialized() && isBuyerWellInitialized(buyer) && isAppOrderReferenceUsable(appOrderReference){
+            getCurrentStatusBarColor()
             self.buyer = buyer
             self.appOrderReference = appOrderReference
             searchCallback = callback
@@ -85,8 +99,24 @@ public class PaymentezSDK {
         }
     }
     
+    public func startSearch(navigationController: UINavigationController, buyer: PmzBuyer, appOrderReference: String, searchStoresFilter: String, callback: PmzSearchCallback) {
+        if isInitialized() && isBuyerWellInitialized(buyer) && isAppOrderReferenceUsable(appOrderReference){
+            getCurrentStatusBarColor()
+            self.buyer = buyer
+            self.appOrderReference = appOrderReference
+            searchCallback = callback
+            navController = navigationController
+            navigationController.isNavigationBarHidden = true
+            presentingVC = navigationController.viewControllers.last
+            let firstController = PmzStoresViewController.init()
+            firstController.filter = searchStoresFilter
+            navigationController.pushViewController(firstController, animated: true)
+        }
+    }
+    
     public func startSearch(navigationController: UINavigationController, buyer: PmzBuyer, appOrderReference: String, storeId: CLong, callback: PmzSearchCallback) {
         if isInitialized() && isBuyerWellInitialized(buyer) && isAppOrderReferenceUsable(appOrderReference) {
+            getCurrentStatusBarColor()
             self.buyer = buyer
             self.appOrderReference = appOrderReference
             searchCallback = callback
@@ -101,6 +131,7 @@ public class PaymentezSDK {
     
     public func showSummary(navigationController: UINavigationController, order: PmzOrder, callback: PmzSearchCallback) {
         if(isInitialized()) {
+            getCurrentStatusBarColor()
             searchCallback = callback
             navController = navigationController
             navigationController.isNavigationBarHidden = true
@@ -138,6 +169,7 @@ public class PaymentezSDK {
     
     public func startPayAndPlace(navigationController: UINavigationController, order: PmzOrder, paymentData: PmzPaymentData, callback: PmzPayAndPlaceCallback) {
         if isInitialized() {
+            getCurrentStatusBarColor()
             paymentCheckerCallback = callback
             let payAndPlace = PmzPayAndPlaceViewController.init()
             payAndPlace.paymentData = paymentData
@@ -147,6 +179,7 @@ public class PaymentezSDK {
     
     public func startPayAndPlace(navigationController: UINavigationController, order: PmzOrder, paymentData: PmzPaymentData, skipSummary: Bool, callback: PmzPayAndPlaceCallback) {
         if isInitialized() {
+            getCurrentStatusBarColor()
             paymentCheckerCallback = callback
             let payAndPlace = PmzPayAndPlaceViewController.init()
             payAndPlace.paymentData = paymentData
@@ -157,6 +190,7 @@ public class PaymentezSDK {
     
     public func startPayAndPlace(navigationController: UINavigationController, order: PmzOrder, paymentsData: [PmzPaymentData], callback: PmzPayAndPlaceCallback) {
         if isInitialized() {
+            getCurrentStatusBarColor()
             paymentCheckerCallback = callback
             let payAndPlace = PmzPayAndPlaceViewController.init()
             payAndPlace.paymentsData = paymentsData
@@ -166,6 +200,7 @@ public class PaymentezSDK {
     
     public func startPayAndPlace(navigationController: UINavigationController, order: PmzOrder, paymentsData: [PmzPaymentData], skipSummary: Bool, callback: PmzPayAndPlaceCallback) {
         if isInitialized() {
+            getCurrentStatusBarColor()
             paymentCheckerCallback = callback
             let payAndPlace = PmzPayAndPlaceViewController.init()
             payAndPlace.skipSummary = skipSummary
@@ -175,6 +210,7 @@ public class PaymentezSDK {
     }
     
     func startPayPlaceGeneric(navigationController: UINavigationController, vc: PmzPayAndPlaceViewController, order: PmzOrder) {
+        getCurrentStatusBarColor()
         vc.order = order
         navController = navigationController
         navigationController.isNavigationBarHidden = true
