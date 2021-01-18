@@ -16,6 +16,10 @@ class PaymentezViewController: UIViewController {
         //headerBar.addBottomShadow()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+         return .lightContent
+    }
+    
     func chnageStatusBarToOriginal() {
         if let color = PaymentezSDK.shared.hostStatusBarColor {
             changeStatusBarColor(color: color)
@@ -52,6 +56,14 @@ class PaymentezViewController: UIViewController {
     
     func showGenericErrorWithBack(vc: UIViewController) {
         let alert = UIAlertController(title: "Error", message: "Ha ocurrido un error inesperado.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: {(alert: UIAlertAction!) in
+            vc.navigationController?.popViewController(animated: true)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showGenericErrorWithBack(title: String, error: String, vc: UIViewController) {
+        let alert = UIAlertController(title: title, message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: {(alert: UIAlertAction!) in
             vc.navigationController?.popViewController(animated: true)
         }))

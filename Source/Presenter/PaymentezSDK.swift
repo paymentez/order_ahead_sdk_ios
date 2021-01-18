@@ -228,6 +228,13 @@ public class PaymentezSDK {
         return Bundle(for: PaymentezSDK.self)
     }
     
+    func getString(_ key: String) -> String {
+        if let bundle = PaymentezSDK.shared.getBundle() {
+            return NSLocalizedString(key, bundle: bundle, comment: "")
+        }
+        return ""
+    }
+    
     func onSearchCancelled() {
         goBackToHostApp()
         searchCallback?.searchCancelled()

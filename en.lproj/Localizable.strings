@@ -1,0 +1,36 @@
+/* 
+  Localizable.strings
+  Pods
+
+  Created by Fennoma on 18/01/2021.
+  
+*/
+
+//Store
+"stores_title" = "Stores";
+
+//Menu
+"menu_title" = "Menu";
+"menu_add_button" = "Add";
+"menu_view_cart_button" = "View cart";
+
+//Product Detail
+"product_detail_title" = "Product details";
+"product_footer_quantity" = "Quantity";
+"product_footer_total" = "Total";
+"product_add_to_cart_button" = "Add to cart";
+
+//Cart
+"cart_title" = "Shopping cart";
+"cart_pay_button" = "Proceed to checkout";
+"cart_your_order_title" = "Your order";
+"cart_keep_buying_button" = "Continue shopping";
+"cart_total_title" = "Total";
+"cart_add_instructions_placeholder" = "Add any order instructions";
+
+//Summary
+"summary_title" = "Order summary";
+"summary_continue_button" = "Continue";
+"summary_header_first_line" = "Receive your order at the store counter";
+"summary_header_second_line" = "Your order will be ready in approximately 5 minutes";
+"summary_header_summary_title" = "Summary";

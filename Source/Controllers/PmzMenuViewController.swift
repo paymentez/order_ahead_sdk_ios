@@ -65,12 +65,23 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
         }
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+         return .lightContent
+    }
+    
     init() {
         super.init(nibName: PmzMenuViewController.PMZ_MENU_VC, bundle: PaymentezSDK.shared.getBundle())
         buttonBarItemSpec = ButtonBarItemSpec.nibFile(nibName: "VirtualCardTabView",
                                                       bundle: PaymentezSDK.shared.getBundle(),
-                                                      width: { _ in
-                                                        return 140.0
+                                                      width: { info in
+                    let font = UIFont.boldSystemFont(ofSize: 14)
+                    if let title = info.title {
+                        let fontAttributes = [NSAttributedString.Key.font: font]
+                        let value = (title as NSString).size(withAttributes: fontAttributes).width + 20
+                        return value
+                    } else {
+                        return 140
+                    }
         })
         
         settings.style.buttonBarBackgroundColor = .white

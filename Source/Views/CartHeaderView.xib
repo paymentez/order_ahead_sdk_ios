@@ -68,10 +68,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FnP-gx-nKv">
-                                <rect key="frame" x="278" y="111.5" width="122" height="20"/>
+                                <rect key="frame" x="247" y="111.5" width="153" height="20"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seguir comprando" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuM-J0-lEr">
-                                        <rect key="frame" x="16" y="4" width="90" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" text="cart_keep_buying_button" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuM-J0-lEr" customClass="I18NLabel" customModule="PaymentezSDK" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="4" width="121" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -84,7 +84,6 @@
                                     <constraint firstAttribute="bottom" secondItem="yuM-J0-lEr" secondAttribute="bottom" constant="4" id="Hd3-9g-iaE"/>
                                     <constraint firstItem="yuM-J0-lEr" firstAttribute="leading" secondItem="FnP-gx-nKv" secondAttribute="leading" constant="16" id="Mhu-w6-CqZ"/>
                                     <constraint firstItem="yuM-J0-lEr" firstAttribute="centerY" secondItem="FnP-gx-nKv" secondAttribute="centerY" id="RoV-l9-ON1"/>
-                                    <constraint firstAttribute="width" constant="122" id="vpH-FB-lXl"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -92,8 +91,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Tu pedido" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="851-9E-fvf">
-                                <rect key="frame" x="15" y="112" width="248" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="cart_your_order_title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="851-9E-fvf" customClass="I18NLabel" customModule="PaymentezSDK" customModuleProvider="target">
+                                <rect key="frame" x="15" y="112" width="217" height="19"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

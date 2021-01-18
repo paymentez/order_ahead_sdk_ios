@@ -11,6 +11,13 @@ extension UIViewController {
     
     static var loading: Bool = false
     
+    func getString(_ key: String) -> String {
+        if let bundle = PaymentezSDK.shared.getBundle() {
+            return NSLocalizedString(key, bundle: bundle, comment: "")
+        }
+        return ""
+    }
+    
     static var loadingView: UIVisualEffectView = {
         var containerView = UIVisualEffectView(frame: UIScreen.main.bounds)
         containerView.isHidden = true

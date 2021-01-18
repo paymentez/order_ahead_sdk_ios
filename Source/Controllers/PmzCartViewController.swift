@@ -117,6 +117,7 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
             self.order = order.mergeData(self.order!)
             self.orderModified = true
             self.dismissPmzLoading()
+            self.checkForItems()
             }, failure: { [weak self] (error) in
                 guard let self = self else { return }
                 self.dismissPmzLoading()
@@ -124,10 +125,17 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
         })
     }
     
+    func checkForItems() {
+        if order == nil || order!.items == nil || order!.items!.count == 0 {
+            showGenericErrorWithBack(title: "Carrito vacío", error: "Su carrito está vacío, vuelva a llenarlo", vc: self)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CartHeaderView") as! CartHeaderView
             cell.configure(store: store)
+            cell.delegate = self
             return cell
         }
         if let size = order?.items?.count {
