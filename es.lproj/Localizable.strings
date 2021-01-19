@@ -13,6 +13,7 @@
 "menu_title" = "Menú";
 "menu_add_button" = "Agregar";
 "menu_view_cart_button" = "Ir al carrito";
+"menu_couldnt_load_message" = "No se ha podido cargar el menú.";
 
 //Product Detail
 "product_detail_title" = "Detalles del producto";
@@ -27,6 +28,9 @@
 "cart_keep_buying_button" = "Seguir comprando";
 "cart_total_title" = "Total";
 "cart_add_instructions_placeholder" = "Agregar comentarios del pedido";
+"cart_delete_item_question_closed" = "¿Seguro que desea borrar el item?";
+"cart_delete_item_question_opened" = "¿Seguro que desea borrar el item";
+"cart_delete_item_title" = "Borrar item";
 
 //Summary
 "summary_title" = "Resumen de tu pedido";
@@ -34,3 +38,20 @@
 "summary_header_first_line" = "Recibe tu pedido en el mostrador del comercio";
 "summary_header_second_line" = "Tu orden estará lista en aproximadamente 5 minutos";
 "summary_header_summary_title" = "Resumen";
+"summary_footer_total_title" = "Total";
+
+//Pay and Place
+"pay_and_place_processing_title" = "Procesando...";
+
+//Errors
+"error_title" = "Error";
+"error_generic_error" = "Ha ocurrido un error inesperado.";
+"error_cart_empty_cart_title" = "Carrito vacío";
+"error_cart_empty_cart_message" = "Su carrito está vacío, vuelva a llenarlo";
+"error_menu_empty_cart" = "Tu carrito está vacío.";
+
+//Generics
+"accept_button" = "Aceptar";
+"continue_button" = "Continuar";
+"confirm_button" = "Confirmar";
+"cancel_button" = "Cancelar";

@@ -61,7 +61,7 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
             forcedId = true
             startSession()
         } else {
-            goBackToHostApp("No se ha podido cargar la pantalla.")
+            goBackToHostApp(getString("menu_couldnt_load_message"))
         }
     }
     
@@ -194,9 +194,13 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
         }
     }
     
-    func showError(_ error: String? = "Ha ocurrido un error inesperado.") {
-        let alert = UIAlertController(title: "Error", message: error!, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+    func showError(_ error: String?) {
+        var errorToShow = getString("error_generic_error")
+        if let error = error {
+            errorToShow = error
+        }
+        let alert = UIAlertController(title: getString("error_title"), message: errorToShow, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: getString("accept_button"), style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
@@ -337,13 +341,17 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
         if let items = order?.items, items.count > 0 {
             goToCart()
         } else {
-            showError("Tu carrito está vacío.")
+            showError(getString("error_menu_empty_cart"))
         }
     }
     
-    func goBackToHostApp(_ error: String? = "Ha ocurrido un error inesperado.") {
-        let alert = UIAlertController(title: "Error", message: error!, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: {(alert: UIAlertAction!) in
+    func goBackToHostApp(_ error: String? = nil) {
+        var errorToShow = getString("error_generic_error")
+        if let error = error {
+            errorToShow = error
+        }
+        let alert = UIAlertController(title: getString("error_title"), message: errorToShow, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: getString("continue_button"), style: .default, handler: {(alert: UIAlertAction!) in
             PaymentezSDK.shared.goBackWithServiceError()
         }))
         present(alert, animated: true, completion: nil)

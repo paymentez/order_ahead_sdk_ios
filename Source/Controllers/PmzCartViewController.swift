@@ -92,19 +92,19 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
     }
     
     func tryToRemoveItem(indexPath: IndexPath) {
-        var message = "¿Seguro que desea borrar el item?"
+        var message = getString("cart_delete_item_question_closed")
         if let productName = self.order?.items?[indexPath.row - 1].productName {
-            message = "¿Seguro que desea borrar el item \(productName)?"
+            message = getString("cart_delete_item_question_opened") + "\(productName)?"
         }
-        let alert = UIAlertController(title: "Borrar item", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: {(alert: UIAlertAction!) in
+        let alert = UIAlertController(title: getString("cart_delete_item_title"), message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: getString("confirm_button"), style: .default, handler: {(alert: UIAlertAction!) in
             let itemToRemove = self.order!.items![indexPath.row - 1]
             self.removeItem(itemToRemove)
             self.order!.items!.remove(at: indexPath.row - 1)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             self.refreshPrice()
         }))
-        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: {(alert: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: getString("cancel_button"), style: .cancel, handler: {(alert: UIAlertAction!) in
             self.tableView.reloadData()
         }))
         present(alert, animated: true, completion: nil)
@@ -127,7 +127,7 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
     
     func checkForItems() {
         if order == nil || order!.items == nil || order!.items!.count == 0 {
-            showGenericErrorWithBack(title: "Carrito vacío", error: "Su carrito está vacío, vuelva a llenarlo", vc: self)
+            showGenericErrorWithBack(title: getString("error_cart_empty_cart_title"), error: getString("error_cart_empty_cart_message"), vc: self)
         }
     }
     
