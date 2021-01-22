@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class I18NTextView: UITextView {
+class PmzLocalizationTextView: UITextView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
