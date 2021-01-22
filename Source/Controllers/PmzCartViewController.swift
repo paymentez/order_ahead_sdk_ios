@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITableViewDataSource, CartHeaderDelegate {
+class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITableViewDataSource, CartHeaderDelegate, PmzProductVCDelegate {
     
     static let PMZ_CART_VC = "PmzCartVC"
     
@@ -18,6 +18,7 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
     var store: PmzStore?
     var order: PmzOrder?
     
+    var fromReopen: Bool = false
     var orderModified: Bool = false
     
     init() {
@@ -31,7 +32,17 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         nextButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.finishFlow)))
+        setColors()
         setTableView()
+        if(fromReopen) {
+            startSession()
+        }
+    }
+    
+    func setColors() {
+        if let buttonColor = PaymentezSDK.shared.style?.buttonBackgroundColor {
+            changeStatusBarColor(color: buttonColor)
+        }
     }
     
     func setTableView() {
@@ -75,6 +86,20 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tryToRemoveItem(indexPath: indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        let count = getCount()
+        if indexPath.row > 0 && indexPath.row < count - 1, let item = order?.items?[indexPath.row - 1] {
+            let productVC = PmzProductViewController.init()
+            item.orderId = order?.id
+            productVC.item = item.copy()
+            productVC.store = store
+            productVC.editMode = true
+            productVC.delegate = self
+            PaymentezSDK.shared.pushVC(vc: productVC)
         }
     }
     
@@ -125,9 +150,16 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
         })
     }
     
+    func onItemAddedToOrder(order: PmzOrder) {
+        self.order = order
+        tableView.reloadData()
+    }
+    
     func checkForItems() {
         if order == nil || order!.items == nil || order!.items!.count == 0 {
-            showGenericErrorWithBack(title: getString("error_cart_empty_cart_title"), error: getString("error_cart_empty_cart_message"), vc: self)
+            showGenericErrorWithCallback(title: getString("error_cart_empty_cart_title"), error: getString("error_cart_empty_cart_message"), action: {(alert: UIAlertAction!) in
+                self.backDidPressed(self)
+            })
         }
     }
     
@@ -167,10 +199,40 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
     }
     
     @IBAction func backDidPressed(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if fromReopen {
+            goBackToPmzMenu()
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func goBackToPmzMenu() {
+        let menu = PmzMenuViewController.init()
+        menu.store = store
+        menu.order = order
+        menu.fromReopen = true
+        let transition = CATransition()
+        transition.duration = 0.2
+        transition.type = CATransitionType.fade
+        transition.subtype = CATransitionSubtype.fromRight
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(menu, animated: false)
     }
     
     func onKeepBuyingPressed() {
         backDidPressed(self)
+    }
+    
+    func startSession() {
+        showLoading()
+        API.sharedInstance.startSession(session: PaymentezSDK.shared.session!, callback: { [weak self] (token) in
+            guard let self = self else { return }
+            PaymentezSDK.shared.token = token
+            self.dismissPmzLoading()
+            }, failure: { [weak self] (error) in
+                guard let self = self else { return }
+                self.dismissPmzLoading()
+                self.goBackToHostApp()
+        })
     }
 }

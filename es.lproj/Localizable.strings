@@ -20,6 +20,7 @@
 "product_footer_quantity" = "Cantidad";
 "product_footer_total" = "Total";
 "product_add_to_cart_button" = "Agregar al carrito";
+"product_modify_item_button" = "Modificar";
 
 //Cart
 "cart_title" = "Carrito de compras";

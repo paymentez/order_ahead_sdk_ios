@@ -31,6 +31,7 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     
     var filteredCategories: [PmzCategory]?
     
+    var fromReopen: Bool = false
     var forcedId: Bool = false
     
     var vcs: [PmzMenuFragmentVC]?
@@ -221,7 +222,7 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     
     @IBAction func backDidPressed(_ sender: Any) {
         if searchBar.isHidden {
-            if forcedId {
+            if forcedId || fromReopen {
                 PaymentezSDK.shared.onSearchCancelled()
             } else {
                 self.navigationController?.popViewController(animated: true)
@@ -277,7 +278,11 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
             guard let self = self else { return }
             self.menu = menu
             self.initFragments()
-            self.startOrder()
+            if !self.fromReopen {
+                self.startOrder()
+            } else {
+                self.dismissPmzLoading()
+            }
             }, failure: { [weak self] (error) in
                 guard let self = self else { return }
                 self.dismissPmzLoading()

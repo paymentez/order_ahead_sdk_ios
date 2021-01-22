@@ -21,6 +21,7 @@
                 <outlet property="mainView" destination="6xy-ji-xoH" id="My2-ge-tS7"/>
                 <outlet property="nextButton" destination="TXn-U8-4An" id="M4u-r2-Iev"/>
                 <outlet property="nextButtonBackground" destination="TXn-U8-4An" id="xp9-HI-ETI"/>
+                <outlet property="nextButtonText" destination="ySl-lP-oLW" id="M8I-xB-J5A"/>
                 <outlet property="nextButtonTextColor" destination="ySl-lP-oLW" id="lOz-sy-fwr"/>
                 <outlet property="tableView" destination="8GE-Gg-Z1T" id="Tkb-0q-pfT"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kw0-2p-5Vp"/>

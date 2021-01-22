@@ -55,24 +55,26 @@ class PmzProductConfigurationGroup {
         return result
     }
     
-    func addConfig(config: PmzProductConfiguration) {
+    func addConfig(config: PmzProductConfiguration, editMode: Bool) {
         if configurations == nil {
             configurations = PmzConfigurationHolder()
         }
-        if(config.isDefault != nil && config.isDefault!) {
-            config.checked = true
-            addOrRemoveConfig(config)
-        } else if configurations?.configurations?.count == 0 {
-            if config.minConfiguration != nil && config.minConfiguration! > 0 {
+        if !editMode {
+            if(config.isDefault != nil && config.isDefault!) {
                 config.checked = true
                 addOrRemoveConfig(config)
+            } else if configurations?.configurations?.count == 0 {
+                if config.minConfiguration != nil && config.minConfiguration! > 0 {
+                    config.checked = true
+                    addOrRemoveConfig(config)
+                } else {
+                    config.checked = false
+                    removeConfigIfPossible(config)
+                }
             } else {
                 config.checked = false
                 removeConfigIfPossible(config)
             }
-        } else {
-            config.checked = false
-            removeConfigIfPossible(config)
         }
         configurations?.add(config)
         if title == nil, let subtypeName = config.subtypeName {

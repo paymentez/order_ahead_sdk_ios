@@ -70,6 +70,12 @@ class PaymentezViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func showGenericErrorWithCallback(title: String, error: String, action: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: title, message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: getString("continue_button"), style: .default, handler: action))
+        present(alert, animated: true, completion: nil)
+    }
+    
     func goBackToHostApp() {
         let alert = UIAlertController(title: getString("error_title"), message: getString("error_generic_error"), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: getString("continue_button"), style: .default, handler: {(alert: UIAlertAction!) in

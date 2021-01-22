@@ -33,7 +33,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3I-Zo-T40">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="705"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="760"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color del Fondo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yk4-ko-dxc" userLabel="Background Color Title">
                                                 <rect key="frame" x="20" y="20" width="335" height="16"/>
@@ -177,8 +177,30 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKI-Ik-uhQ" userLabel="Show Summary Button">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hcb-rx-vpE" userLabel="Search By ID Button">
                                                 <rect key="frame" x="20" y="530" width="335" height="45"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REABRIR ORDEN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW8-hx-w2e">
+                                                        <rect key="frame" x="102.5" y="12" width="130" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="TextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="orange"/>
+                                                <constraints>
+                                                    <constraint firstItem="vW8-hx-w2e" firstAttribute="centerX" secondItem="Hcb-rx-vpE" secondAttribute="centerX" id="9Uw-P7-hxQ"/>
+                                                    <constraint firstItem="vW8-hx-w2e" firstAttribute="centerY" secondItem="Hcb-rx-vpE" secondAttribute="centerY" id="UCq-NK-kSu"/>
+                                                    <constraint firstAttribute="height" constant="45" id="eEp-Ms-43F"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="23"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKI-Ik-uhQ" userLabel="Show Summary Button">
+                                                <rect key="frame" x="20" y="585" width="335" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VER RESUMEN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9H-Oh-sKm">
                                                         <rect key="frame" x="110" y="12" width="115.5" height="21"/>
@@ -200,7 +222,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kIX-Zl-CVD" userLabel="Get Stores Button">
-                                                <rect key="frame" x="20" y="585" width="335" height="45"/>
+                                                <rect key="frame" x="20" y="640" width="335" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OBTENER COMERCIOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GxG-lr-ZA9">
                                                         <rect key="frame" x="78" y="12" width="179.5" height="21"/>
@@ -222,7 +244,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4e2-hd-S04" userLabel="Payment Button">
-                                                <rect key="frame" x="20" y="640" width="335" height="45"/>
+                                                <rect key="frame" x="20" y="695" width="335" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAGOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8V-nN-vpj">
                                                         <rect key="frame" x="139.5" y="12" width="56" height="21"/>
@@ -269,10 +291,11 @@
                                             <constraint firstItem="v00-Vy-IDD" firstAttribute="leading" secondItem="mZi-4k-Idi" secondAttribute="leading" id="GdR-iy-XF2"/>
                                             <constraint firstItem="T3U-1h-Jtf" firstAttribute="trailing" secondItem="4e2-hd-S04" secondAttribute="trailing" id="HUg-pt-7Bg"/>
                                             <constraint firstItem="kIX-Zl-CVD" firstAttribute="top" secondItem="bKI-Ik-uhQ" secondAttribute="bottom" constant="10" id="IFc-y3-1RW"/>
-                                            <constraint firstItem="bKI-Ik-uhQ" firstAttribute="top" secondItem="B8m-uc-nd7" secondAttribute="bottom" constant="10" id="ISd-5P-XEf"/>
                                             <constraint firstItem="mZi-4k-Idi" firstAttribute="leading" secondItem="Yk4-ko-dxc" secondAttribute="leading" id="Idh-3m-IGP"/>
+                                            <constraint firstItem="Hcb-rx-vpE" firstAttribute="trailing" secondItem="B8m-uc-nd7" secondAttribute="trailing" id="Iya-zv-I9D"/>
                                             <constraint firstItem="B8m-uc-nd7" firstAttribute="leading" secondItem="4e2-hd-S04" secondAttribute="leading" id="J1X-lB-300"/>
                                             <constraint firstItem="4e2-hd-S04" firstAttribute="top" secondItem="kIX-Zl-CVD" secondAttribute="bottom" constant="10" id="K8Z-cq-DYF"/>
+                                            <constraint firstItem="Hcb-rx-vpE" firstAttribute="leading" secondItem="B8m-uc-nd7" secondAttribute="leading" id="L6y-Xf-PEI"/>
                                             <constraint firstItem="ctn-8Z-Rav" firstAttribute="leading" secondItem="mZi-4k-Idi" secondAttribute="leading" id="LSL-ms-0Fl"/>
                                             <constraint firstItem="uAq-WU-gAP" firstAttribute="leading" secondItem="mZi-4k-Idi" secondAttribute="leading" id="LYo-9K-q7C"/>
                                             <constraint firstItem="Vfg-tp-RCo" firstAttribute="trailing" secondItem="v00-Vy-IDD" secondAttribute="trailing" id="Luj-cL-5nO"/>
@@ -287,6 +310,7 @@
                                             <constraint firstItem="uAq-WU-gAP" firstAttribute="top" secondItem="Vfg-tp-RCo" secondAttribute="bottom" constant="30" id="Ydl-tR-bGb"/>
                                             <constraint firstItem="ctn-8Z-Rav" firstAttribute="top" secondItem="2nX-2h-qPS" secondAttribute="top" id="a9P-lX-KYO"/>
                                             <constraint firstItem="cae-6L-3G6" firstAttribute="leading" secondItem="Yk4-ko-dxc" secondAttribute="leading" id="cY5-wV-tOm"/>
+                                            <constraint firstItem="bKI-Ik-uhQ" firstAttribute="top" secondItem="Hcb-rx-vpE" secondAttribute="bottom" constant="10" id="cvd-mn-OfB"/>
                                             <constraint firstItem="X15-TH-lAH" firstAttribute="top" secondItem="Vfg-tp-RCo" secondAttribute="top" id="dkp-dL-LGZ"/>
                                             <constraint firstItem="qSt-9P-rie" firstAttribute="leading" secondItem="SHI-ky-aal" secondAttribute="trailing" constant="10" id="do0-4Z-GRs"/>
                                             <constraint firstItem="T3U-1h-Jtf" firstAttribute="leading" secondItem="4e2-hd-S04" secondAttribute="leading" id="eYK-jo-zbh"/>
@@ -302,6 +326,7 @@
                                             <constraint firstItem="B8m-uc-nd7" firstAttribute="trailing" secondItem="4e2-hd-S04" secondAttribute="trailing" id="pZ1-NB-d3P"/>
                                             <constraint firstItem="qSt-9P-rie" firstAttribute="top" secondItem="4XJ-mg-5sQ" secondAttribute="bottom" constant="5" id="rw3-gS-cNM"/>
                                             <constraint firstItem="2nX-2h-qPS" firstAttribute="leading" secondItem="ctn-8Z-Rav" secondAttribute="trailing" constant="10" id="t6Z-D5-AmM"/>
+                                            <constraint firstItem="Hcb-rx-vpE" firstAttribute="top" secondItem="B8m-uc-nd7" secondAttribute="bottom" constant="10" id="vBj-kX-ygO"/>
                                             <constraint firstItem="2nX-2h-qPS" firstAttribute="trailing" secondItem="mZi-4k-Idi" secondAttribute="trailing" id="vCw-eK-AKc"/>
                                             <constraint firstAttribute="trailing" secondItem="4e2-hd-S04" secondAttribute="trailing" constant="20" id="xm0-tM-yA4"/>
                                         </constraints>
@@ -338,6 +363,7 @@
                         <outlet property="getStoresButton" destination="kIX-Zl-CVD" id="FNr-xb-je1"/>
                         <outlet property="paymentButton" destination="4e2-hd-S04" id="VXL-gY-Pd2"/>
                         <outlet property="randomizeButton" destination="uAq-WU-gAP" id="C6h-fr-DYr"/>
+                        <outlet property="reopenOrderButton" destination="Hcb-rx-vpE" id="YhU-PL-I50"/>
                         <outlet property="searchButton" destination="T3U-1h-Jtf" id="NFv-4q-B3u"/>
                         <outlet property="searchWithStoreIdButton" destination="B8m-uc-nd7" id="Dz9-Pa-k6C"/>
                         <outlet property="summaryButton" destination="bKI-Ik-uhQ" id="EUe-kK-NCl"/>

@@ -113,6 +113,7 @@
 		C94688F4E61C5F52F9B5D04FD431D61B /* PmzPayAndPlaceVC.xib in Sources */ = {isa = PBXBuildFile; fileRef = ED8076203D6B24E8B6D2C8AC1ABC9C56 /* PmzPayAndPlaceVC.xib */; };
 		CBE7575F501448EEBBCB2A83CBAB7222 /* PmzStoresVC.xib in Sources */ = {isa = PBXBuildFile; fileRef = 95D31D6832897282D4C94EC5677F8DE6 /* PmzStoresVC.xib */; };
 		CE5B7B114ED0C6C7E9F5AC8B1AEDBE20 /* SegmentedPagerTabStripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F357BA4C54F8E75BEB2D88C3A05272DE /* SegmentedPagerTabStripViewController.swift */; };
+		CF73D3A225BA13B60040B97C /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73D3A025BA13A90040B97C /* UINavigationControllerExtension.swift */; };
 		CFE915F125B5E2E80041D971 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE915F325B5E2E80041D971 /* Localizable.strings */; };
 		CFE9160325B5E5360041D971 /* I18NLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE915E825B5E0B00041D971 /* I18NLabel.swift */; };
 		CFE9160425B5E53D0041D971 /* I18NButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE915EA25B5E0E10041D971 /* I18NButton.swift */; };
@@ -320,6 +321,7 @@
 		C8A3BA41FB57A0C25901FE0DD78DD274 /* CustomTabItemCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CustomTabItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		C97185856DA935430140DD5462D53A69 /* CartFooterView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CartFooterView.swift; sourceTree = "<group>"; };
 		CC5EF2844226D0B417EF37A5B9044F98 /* PmzAddress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PmzAddress.swift; sourceTree = "<group>"; };
+		CF73D3A025BA13A90040B97C /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		CFE915E825B5E0B00041D971 /* I18NLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I18NLabel.swift; sourceTree = "<group>"; };
 		CFE915EA25B5E0E10041D971 /* I18NButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I18NButton.swift; sourceTree = "<group>"; };
 		CFE915EC25B5E0FC0041D971 /* I18NTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I18NTextField.swift; sourceTree = "<group>"; };
@@ -552,6 +554,7 @@
 				428CC329D3E4817C387ADA2F5D93B300 /* PmzImageUtils.swift */,
 				4F8878E97FC4530DBBF9EE8180620B4E /* UILabelExtension.swift */,
 				1270AA5A46B423FFA35DA509B7EA1E97 /* UIViewControllerExtension.swift */,
+				CF73D3A025BA13A90040B97C /* UINavigationControllerExtension.swift */,
 			);
 			name = Utils;
 			path = Source/Utils;
@@ -1105,6 +1108,7 @@
 				9062EBA5A58E3A297FF991304B0C863E /* ColorCompat.swift in Sources */,
 				D9EA0A38287718AAC38AF00BC5AE8B84 /* CurrencyUtils.swift in Sources */,
 				30636699BC2B04E3B1AD035C9BAE23A1 /* CustomTabItemCollectionViewCell.swift in Sources */,
+				CF73D3A225BA13B60040B97C /* UINavigationControllerExtension.swift in Sources */,
 				C84A2F358062CB73EA79A98ABEB8872F /* FontExtension.swift in Sources */,
 				F131987141B00B78F290F21AE0E7AA0F /* PaymentezSDK-dummy.m in Sources */,
 				CFE9160825B5EE210041D971 /* I18NTextView.swift in Sources */,

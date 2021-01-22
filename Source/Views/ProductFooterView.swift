@@ -44,7 +44,6 @@ class ProductFooterView: UITableViewCell {
     
     @objc func didTapPlusButton() {
         counter += 1
-        amount.text = String(counter)
         if delegate != nil {
            delegate?.onQuantityChanged(quantity: counter)
         }
@@ -54,7 +53,6 @@ class ProductFooterView: UITableViewCell {
     @objc func didTapMinusButton() {
         if counter > 1 {
             counter -= 1
-            amount.text = String(counter)
             if delegate != nil {
                delegate?.onQuantityChanged(quantity: counter)
             }
@@ -72,6 +70,7 @@ class ProductFooterView: UITableViewCell {
     }
     
     func refresh() {
+        amount.text = String(counter)
         totalPrice.text = CurrencyUtils.getPrice(currentPrice * Double(counter))
     }
 }

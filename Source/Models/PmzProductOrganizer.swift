@@ -10,20 +10,48 @@ import Foundation
 class PmzProductOrganizer {
     
     var groups: [PmzProductConfigurationGroup]?
+    var editMode: Bool = false
     
     func setProduct(product: PmzProduct?) {
         if let configurations = product?.configurations {
             for config in configurations {
                 let group = getLasGroup()
                 if group.shouldAddConfiguration(config: config) {
-                    group.addConfig(config: config)
+                    group.addConfig(config: config, editMode: editMode)
                 } else {
                     let newGroup = PmzProductConfigurationGroup()
                     groups?.append(newGroup)
-                    newGroup.addConfig(config: config)
+                    newGroup.addConfig(config: config, editMode: editMode)
                 }
             }
         }
+    }
+    
+    func setItem(item: PmzItem?) {
+        if let configs = item?.configurations {
+            for config in configs {
+                if let productConfig = getProductConfigById(config.configurationId) {
+                    productConfig.checked = true
+                }
+            }
+        }
+    }
+    
+    func getProductConfigById(_ id: Int?) -> PmzProductConfiguration? {
+        var result: PmzProductConfiguration? = nil
+        if let groups = groups, let id = id {
+            for group in groups {
+                if let configs = group.configurations?.configurations {
+                    for config in configs {
+                        if let configId = config.id, configId == id {
+                            result = config
+                            group.addOrRemoveConfig(config)
+                        }
+                    }
+                }
+            }
+        }
+        return result
     }
     
     func canUnselect(position: Int) -> Bool {
