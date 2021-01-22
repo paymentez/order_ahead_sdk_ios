@@ -7,13 +7,15 @@ public class PmzItem {
     public var annotation: String?
     public var status: Int?
     public var totalAmount: Double?
-    public var unitAmount: CLong?
+    public var unitAmount: Double?
     public var quantity: Int?
     public var productId: CLong?
     public var productName: String?
     public var discount: Double?
     public var imageUrl: String?
     public var configurations: [PmzConfiguration]?
+    
+    init(){}
     
     init(product: PmzProduct, orderId: CLong) {
         self.orderId = orderId
@@ -40,7 +42,7 @@ public class PmzItem {
         if let totalAmount = dictionary["total_amount"] as? Double {
             self.totalAmount = totalAmount
         }
-        if let unitAmount = dictionary["unit_amount"] as? CLong {
+        if let unitAmount = dictionary["unit_amount"] as? Double {
             self.unitAmount = unitAmount
         }
         if let quantity = dictionary["quantity"] as? Int {
@@ -87,5 +89,35 @@ public class PmzItem {
         return [API.K.ParameterKey.orderId: orderId!,
                 API.K.ParameterKey.idOrderItem: id!,
                 API.K.ParameterKey.token: PaymentezSDK.shared.token!]
+    }
+    
+    func copy() -> PmzItem {
+        let item = PmzItem()
+        item.id = self.id
+        item.orderId = self.orderId
+        item.tax = self.tax
+        item.annotation = self.annotation
+        item.status = self.status
+        item.totalAmount = self.totalAmount
+        item.unitAmount = self.unitAmount
+        item.quantity = self.quantity
+        item.productId = self.productId
+        item.productName = self.productName
+        item.discount = self.discount
+        item.imageUrl = self.imageUrl
+        item.configurations = makeCopy(configs: configurations)
+        return item
+    }
+    
+    func makeCopy(configs: [PmzConfiguration]?) -> [PmzConfiguration]? {
+        if let configs = configs {
+            var newConfigs = [PmzConfiguration]()
+            for config in configs {
+                newConfigs.append(config.copy())
+            }
+            return newConfigs
+        } else {
+            return nil
+        }
     }
 }

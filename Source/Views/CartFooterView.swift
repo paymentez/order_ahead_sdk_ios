@@ -9,7 +9,7 @@ import Foundation
 
 class CartFooterView: UITableViewCell, UITextViewDelegate {
     
-    static let placeholder = "Agregar comentarios del pedido"
+    static var placeholder = ""
     
     @IBOutlet var totalPaymentTitle: UILabel!
     @IBOutlet var totalPayment: UILabel!
@@ -20,6 +20,7 @@ class CartFooterView: UITableViewCell, UITextViewDelegate {
             totalPaymentTitle.textColor = textColor
             totalPayment.textColor = textColor
         }
+        CartFooterView.placeholder = PaymentezSDK.shared.getString("cart_add_instructions_placeholder")
         comment.text = CartFooterView.placeholder
         comment.delegate = self
     }

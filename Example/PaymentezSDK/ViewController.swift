@@ -19,6 +19,7 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
     @IBOutlet var getStoresButton: UIView!
     @IBOutlet var paymentButton: UIView!
     @IBOutlet var randomizeButton: UIView!
+    @IBOutlet var reopenOrderButton: UIView!
     
     var lastSelectedTextField: UITextField?
     
@@ -29,6 +30,8 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
     
     var colors: [Color]?
     
+    var previousOrder: PmzOrder?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController!.isNavigationBarHidden = true
@@ -37,6 +40,7 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
         self.view?.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector (self.dismissKeyboard)))
         searchButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goToSearch)))
         searchWithStoreIdButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goToSearchWithId)))
+        reopenOrderButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goToReopenOrder)))
         summaryButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goToSummary)))
         getStoresButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.getStores)))
         paymentButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goToPayment)))
@@ -67,6 +71,17 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
                 .startSearch(navigationController: navigationController!, buyer: getBuyer(), appOrderReference: "appOrderReference", storeId: 105, callback: self)
     }
     
+    @objc func goToReopenOrder() {
+        var order = PmzOrder.hardcoded()
+        if previousOrder != nil {
+            order = previousOrder!
+        }
+        
+        PaymentezSDK.shared
+                .setStyle(style: getStyle())
+                .reopenOrder(navigationController: navigationController!, order: order, buyer: getBuyer(), appOrderReference: "appOrderReference", callback: self)
+    }
+    
     @objc func goToSummary() {
         PaymentezSDK.shared
                 .setStyle(style: getStyle())
@@ -94,6 +109,7 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
     }
     
     func searchFinishedSuccessfully(order: PmzOrder) {
+        previousOrder = order
         showToast(controller: self, message: "Flujo terminado exitosamente.", seconds: 1)
     }
     

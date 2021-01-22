@@ -12,6 +12,7 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var nextButton: UIView!
+    @IBOutlet var nextButtonText: I18NLabel!
     var footerView: ProductFooterView?
     
     var organizer: PmzProductOrganizer
@@ -19,8 +20,11 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
     var orderId: CLong?
     var order: PmzOrder?
     var item: PmzItem?
+    var store: PmzStore?
     
     var delegate: PmzProductVCDelegate?
+    
+    var editMode: Bool = false
     
     var currentPrice: Double = 0
     var currentAmount: Int = 1
@@ -40,9 +44,69 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
         if let currentPrice = product?.currentPrice {
             self.currentPrice = currentPrice
         }
-        organizer.setProduct(product: product)
         setTableView()
-        item = PmzItem(product: product!, orderId: orderId!)
+        if(editMode) {
+            setEditModeAmounts()
+            getProduct()
+            changeButtonText()
+        } else {
+            organizer.setProduct(product: product)
+            item = PmzItem(product: product!, orderId: orderId!)
+        }
+    }
+    
+    func changeButtonText() {
+        nextButtonText.text = getString("product_modify_item_button")
+    }
+    
+    func setEditModeAmounts() {
+        if let quantity = item?.quantity {
+            currentAmount = quantity
+        }
+        if let unitAmount = item?.unitAmount {
+            currentPrice = unitAmount
+        }
+    }
+    
+    func getProduct() {
+        if let storeId = store?.id {
+            showLoading()
+            API.sharedInstance.getMenu(storeId: storeId, callback: { [weak self] (menu) in
+                guard let self = self else { return }
+                self.findProduct(menu)
+                self.dismissPmzLoading()
+                if self.product != nil {
+                    self.organizer.editMode = true
+                    self.organizer.setProduct(product: self.product)
+                    self.organizer.setItem(item: self.item)
+                    self.tableView.reloadData()
+                } else {
+                    self.showGenericErrorWithBack(vc: self)
+                }
+                }, failure: { [weak self] (error) in
+                    guard let self = self else { return }
+                    self.dismissPmzLoading()
+                    self.showGenericError()
+            })
+        } else {
+            showGenericErrorWithBack(vc: self)
+        }
+    }
+    
+    func findProduct(_ menu: PmzMenu) {
+        if let itemProductId = item?.productId {
+            if let categories = menu.categories {
+                for category in categories {
+                    if let products = category.products {
+                        for product in products {
+                            if let productId = product.id, productId == itemProductId {
+                                self.product = product
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func onQuantityChanged(quantity: Int) {
@@ -82,7 +146,7 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
         let item = organizer.getItem(position: indexPath.row - 1)
         if let type = item?.getType(), type == PmzProductViewController.ITEM_INDEX {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProductConfigurationItemCellView") as! ProductConfigurationItemCellView
-            cell.configure(item: item as! PmzProductConfiguration, position: indexPath.row)
+            cell.configure(item: item as! PmzProductConfiguration, position: indexPath.row - 1)
             cell.delegate = self
             return cell
         } else {
@@ -122,7 +186,7 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
     func refreshItems(ids: [Int]) {
         var indexes = [IndexPath]()
         for id in ids {
-            let index = IndexPath(row: id, section: 0)
+            let index = IndexPath(row: id + 1, section: 0)
             indexes.append(index)
         }
         if indexes.count > 0 {
@@ -133,10 +197,29 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
     @objc func goToFourthPage() {
         showLoading()
         item!.setConfigurations(organizer: organizer)
+        if !editMode {
+            addItemWConfigurations()
+        } else {
+            removeItemWConfigurations()
+        }
+    }
+    
+    func addItemWConfigurations() {
         API.sharedInstance.addItemWithConfigurations(item: item!, callback: { [weak self] (order) in
             guard let self = self else { return }
             self.sendOrderBack(self.mergeData(order))
             self.dismissPmzLoading()
+            }, failure: { [weak self] (error) in
+                guard let self = self else { return }
+                self.dismissPmzLoading()
+                self.showGenericError()
+        })
+    }
+    
+    func removeItemWConfigurations() {
+        API.sharedInstance.deleteItem(item: item!, callback: { [weak self] (order) in
+            guard let self = self else { return }
+            self.addItemWConfigurations()
             }, failure: { [weak self] (error) in
                 guard let self = self else { return }
                 self.dismissPmzLoading()

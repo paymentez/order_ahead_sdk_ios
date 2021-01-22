@@ -27,10 +27,10 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXe-Hb-ugM">
-                                <rect key="frame" x="87" y="12" width="217" height="35.5"/>
+                                <rect key="frame" x="87" y="12" width="171.5" height="35.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aeg-gj-3QT">
-                                        <rect key="frame" x="0.0" y="0.0" width="217" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -53,10 +53,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsO-FM-Q0D">
-                                <rect key="frame" x="316" y="48" width="72" height="20"/>
+                                <rect key="frame" x="270.5" y="48" width="117.5" height="20"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agregar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qiN-UB-z2g">
-                                        <rect key="frame" x="16" y="4" width="40" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="menu_add_button" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qiN-UB-z2g" customClass="I18NLabel" customModule="PaymentezSDK" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="4" width="85.5" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -67,10 +67,8 @@
                                     <constraint firstItem="qiN-UB-z2g" firstAttribute="centerY" secondItem="tsO-FM-Q0D" secondAttribute="centerY" id="31x-KN-3El"/>
                                     <constraint firstItem="qiN-UB-z2g" firstAttribute="leading" secondItem="tsO-FM-Q0D" secondAttribute="leading" constant="16" id="6VW-Pw-pOU"/>
                                     <constraint firstAttribute="bottom" secondItem="qiN-UB-z2g" secondAttribute="bottom" constant="4" id="TXl-Lx-Uhw"/>
-                                    <constraint firstItem="qiN-UB-z2g" firstAttribute="centerX" secondItem="tsO-FM-Q0D" secondAttribute="centerX" id="fRE-wP-PiJ"/>
                                     <constraint firstAttribute="trailing" secondItem="qiN-UB-z2g" secondAttribute="trailing" constant="16" id="kaK-Y5-aNn"/>
                                     <constraint firstItem="qiN-UB-z2g" firstAttribute="top" secondItem="tsO-FM-Q0D" secondAttribute="top" constant="4" id="kpx-P8-rBV"/>
-                                    <constraint firstAttribute="width" constant="72" id="n3P-wb-G54"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

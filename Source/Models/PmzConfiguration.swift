@@ -10,6 +10,8 @@ public class PmzConfiguration {
     public var configurationId: CLong?
     public var discount: Double?
     
+    init(){}
+    
     init(configId: CLong) {
         configurationId = configId
     }
@@ -46,5 +48,17 @@ public class PmzConfiguration {
             }
         }
         return array
+    }
+    
+    func copy() -> PmzConfiguration {
+        let config = PmzConfiguration()
+        config.id = self.id
+        config.annotations = self.annotations
+        config.description = self.description
+        config.type = self.type
+        config.cost = self.cost
+        config.configurationId = self.configurationId
+        config.discount = self.discount
+        return config
     }
 }

@@ -21,6 +21,7 @@
                 <outlet property="mainView" destination="6xy-ji-xoH" id="My2-ge-tS7"/>
                 <outlet property="nextButton" destination="TXn-U8-4An" id="M4u-r2-Iev"/>
                 <outlet property="nextButtonBackground" destination="TXn-U8-4An" id="xp9-HI-ETI"/>
+                <outlet property="nextButtonText" destination="ySl-lP-oLW" id="M8I-xB-J5A"/>
                 <outlet property="nextButtonTextColor" destination="ySl-lP-oLW" id="lOz-sy-fwr"/>
                 <outlet property="tableView" destination="8GE-Gg-Z1T" id="Tkb-0q-pfT"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kw0-2p-5Vp"/>
@@ -44,8 +45,8 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXn-U8-4An">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="45"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agregar al carrito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySl-lP-oLW">
-                                            <rect key="frame" x="125" y="12" width="132" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="product_add_to_cart_button" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySl-lP-oLW" customClass="I18NLabel" customModule="PaymentezSDK" customModuleProvider="target">
+                                            <rect key="frame" x="84.5" y="12.5" width="213.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -99,8 +100,8 @@
                                 <action selector="backDidPressed:" destination="-1" eventType="touchUpInside" id="mka-bT-bGI"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detalle del producto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vu-WW-0kA">
-                            <rect key="frame" x="134.5" y="20.5" width="145" height="19"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="product_detail_title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vu-WW-0kA" customClass="I18NLabel" customModule="PaymentezSDK" customModuleProvider="target">
+                            <rect key="frame" x="139" y="20.5" width="136.5" height="19"/>
                             <fontDescription key="fontDescription" name="MuseoSans-300" family="Museo Sans" pointSize="16"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>

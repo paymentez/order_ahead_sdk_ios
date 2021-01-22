@@ -11,6 +11,13 @@ extension UIViewController {
     
     static var loading: Bool = false
     
+    func getString(_ key: String) -> String {
+        if let bundle = PaymentezSDK.shared.getBundle() {
+            return NSLocalizedString(key, bundle: bundle, comment: "")
+        }
+        return ""
+    }
+    
     static var loadingView: UIVisualEffectView = {
         var containerView = UIVisualEffectView(frame: UIScreen.main.bounds)
         containerView.isHidden = true
@@ -57,9 +64,10 @@ extension UIViewController {
         sharedApplication.delegate?.window??.tintColor = color
 
         if #available(iOS 13.0, *) {
-              let statusBar = UIView(frame: (sharedApplication.delegate?.window??.windowScene?.statusBarManager?.statusBarFrame)!)
+              let statusBar =  UIView()
+              statusBar.frame = UIApplication.shared.statusBarFrame
               statusBar.backgroundColor = color
-              sharedApplication.delegate?.window??.addSubview(statusBar)
+              UIApplication.shared.keyWindow?.addSubview(statusBar)
           } else {
               guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else {
                       return

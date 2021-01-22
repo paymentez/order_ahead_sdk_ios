@@ -1,0 +1,63 @@
+/* 
+  Localizable.strings
+  Pods
+
+  Created by Fennoma on 18/01/2021.
+  
+*/
+
+//Store
+"stores_title" = "Stores";
+
+//Menu
+"menu_title" = "Menu";
+"menu_add_button" = "Add";
+"menu_view_cart_button" = "View cart";
+"menu_couldnt_load_message" = "Menu couldn't be loaded.";
+
+//Product Detail
+"product_detail_title" = "Product details";
+"product_footer_quantity" = "Quantity";
+"product_footer_total" = "Total";
+"product_add_to_cart_button" = "Add to cart";
+"product_modify_item_button" = "Modify";
+
+//Cart
+"cart_title" = "Shopping cart";
+"cart_pay_button" = "Proceed to checkout";
+"cart_your_order_title" = "Your order";
+"cart_keep_buying_button" = "Continue shopping";
+"cart_total_title" = "Total";
+"cart_add_instructions_placeholder" = "Add any order instructions";
+"cart_delete_item_question_closed" = "Are you sure you want to delete this item?";
+"cart_delete_item_question_opened" = "Are you sure you want to delete ";
+"cart_delete_item_title" = "Delete item";
+
+//Summary
+"summary_title" = "Order summary";
+"summary_continue_button" = "Continue";
+"summary_header_first_line" = "Receive your order at the store counter";
+"summary_header_second_line" = "Your order will be ready in approximately 5 minutes";
+"summary_header_summary_title" = "Summary";
+"summary_footer_total_title" = "Total";
+
+//Pay and Place
+"pay_and_place_processing_title" = "Loading...";
+
+//Errors
+"error_title" = "Error";
+"error_generic_error" = "An unexpected error has occurred.";
+"error_cart_empty_cart_title" = "Your cart is empty.";
+"error_cart_empty_cart_message" = "Your cart is empty, please refill it.";
+"error_menu_empty_cart" = "Your cart is empty.";
+
+//Generics
+"accept_button" = "Accept";
+"continue_button" = "Continue";
+"confirm_button" = "Confirm";
+"cancel_button" = "Cancel";
+
+
+
+
+

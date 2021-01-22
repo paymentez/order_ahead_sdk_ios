@@ -16,6 +16,10 @@ class PaymentezViewController: UIViewController {
         //headerBar.addBottomShadow()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+         return .lightContent
+    }
+    
     func chnageStatusBarToOriginal() {
         if let color = PaymentezSDK.shared.hostStatusBarColor {
             changeStatusBarColor(color: color)
@@ -45,22 +49,36 @@ class PaymentezViewController: UIViewController {
     }
     
     func showGenericError() {
-        let alert = UIAlertController(title: "Error", message: "Ha ocurrido un error inesperado.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+        let alert = UIAlertController(title: getString("error_title"), message: getString("error_generic_error"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: getString("accept_button"), style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
     func showGenericErrorWithBack(vc: UIViewController) {
-        let alert = UIAlertController(title: "Error", message: "Ha ocurrido un error inesperado.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: {(alert: UIAlertAction!) in
+        let alert = UIAlertController(title: getString("error_title"), message: getString("error_generic_error"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: getString("continue_button"), style: .default, handler: {(alert: UIAlertAction!) in
             vc.navigationController?.popViewController(animated: true)
         }))
         present(alert, animated: true, completion: nil)
     }
     
+    func showGenericErrorWithBack(title: String, error: String, vc: UIViewController) {
+        let alert = UIAlertController(title: title, message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: getString("continue_button"), style: .default, handler: {(alert: UIAlertAction!) in
+            vc.navigationController?.popViewController(animated: true)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showGenericErrorWithCallback(title: String, error: String, action: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: title, message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: getString("continue_button"), style: .default, handler: action))
+        present(alert, animated: true, completion: nil)
+    }
+    
     func goBackToHostApp() {
-        let alert = UIAlertController(title: "Error", message: "Ha ocurrido un error inesperado.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: {(alert: UIAlertAction!) in
+        let alert = UIAlertController(title: getString("error_title"), message: getString("error_generic_error"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: getString("continue_button"), style: .default, handler: {(alert: UIAlertAction!) in
             PaymentezSDK.shared.goBackWithServiceError()
         }))
         present(alert, animated: true, completion: nil)

@@ -31,6 +31,7 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     
     var filteredCategories: [PmzCategory]?
     
+    var fromReopen: Bool = false
     var forcedId: Bool = false
     
     var vcs: [PmzMenuFragmentVC]?
@@ -61,16 +62,27 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
             forcedId = true
             startSession()
         } else {
-            goBackToHostApp("No se ha podido cargar la pantalla.")
+            goBackToHostApp(getString("menu_couldnt_load_message"))
         }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+         return .lightContent
     }
     
     init() {
         super.init(nibName: PmzMenuViewController.PMZ_MENU_VC, bundle: PaymentezSDK.shared.getBundle())
         buttonBarItemSpec = ButtonBarItemSpec.nibFile(nibName: "VirtualCardTabView",
                                                       bundle: PaymentezSDK.shared.getBundle(),
-                                                      width: { _ in
-                                                        return 140.0
+                                                      width: { info in
+                    let font = UIFont.boldSystemFont(ofSize: 14)
+                    if let title = info.title {
+                        let fontAttributes = [NSAttributedString.Key.font: font]
+                        let value = (title as NSString).size(withAttributes: fontAttributes).width + 20
+                        return value
+                    } else {
+                        return 140
+                    }
         })
         
         settings.style.buttonBarBackgroundColor = .white
@@ -183,9 +195,13 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
         }
     }
     
-    func showError(_ error: String? = "Ha ocurrido un error inesperado.") {
-        let alert = UIAlertController(title: "Error", message: error!, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+    func showError(_ error: String?) {
+        var errorToShow = getString("error_generic_error")
+        if let error = error {
+            errorToShow = error
+        }
+        let alert = UIAlertController(title: getString("error_title"), message: errorToShow, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: getString("accept_button"), style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
@@ -206,7 +222,7 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     
     @IBAction func backDidPressed(_ sender: Any) {
         if searchBar.isHidden {
-            if forcedId {
+            if forcedId || fromReopen {
                 PaymentezSDK.shared.onSearchCancelled()
             } else {
                 self.navigationController?.popViewController(animated: true)
@@ -262,7 +278,11 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
             guard let self = self else { return }
             self.menu = menu
             self.initFragments()
-            self.startOrder()
+            if !self.fromReopen {
+                self.startOrder()
+            } else {
+                self.dismissPmzLoading()
+            }
             }, failure: { [weak self] (error) in
                 guard let self = self else { return }
                 self.dismissPmzLoading()
@@ -326,13 +346,17 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
         if let items = order?.items, items.count > 0 {
             goToCart()
         } else {
-            showError("Tu carrito está vacío.")
+            showError(getString("error_menu_empty_cart"))
         }
     }
     
-    func goBackToHostApp(_ error: String? = "Ha ocurrido un error inesperado.") {
-        let alert = UIAlertController(title: "Error", message: error!, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Continuar", style: .default, handler: {(alert: UIAlertAction!) in
+    func goBackToHostApp(_ error: String? = nil) {
+        var errorToShow = getString("error_generic_error")
+        if let error = error {
+            errorToShow = error
+        }
+        let alert = UIAlertController(title: getString("error_title"), message: errorToShow, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: getString("continue_button"), style: .default, handler: {(alert: UIAlertAction!) in
             PaymentezSDK.shared.goBackWithServiceError()
         }))
         present(alert, animated: true, completion: nil)

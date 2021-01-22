@@ -85,6 +85,14 @@ public class PaymentezSDK {
         }
     }
     
+    private func isOrderUsable(_ order: PmzOrder) -> Bool {
+        if order.id != nil && order.store != nil {
+            return true
+        } else {
+            fatalError("PaymentezSDK: PmzOrder malformed")
+        }
+    }
+    
     public func startSearch(navigationController: UINavigationController, buyer: PmzBuyer, appOrderReference: String, callback: PmzSearchCallback) {
         if isInitialized() && isBuyerWellInitialized(buyer) && isAppOrderReferenceUsable(appOrderReference){
             getCurrentStatusBarColor()
@@ -126,6 +134,23 @@ public class PaymentezSDK {
             let secondController = PmzMenuViewController.init()
             secondController.storeId = storeId
             navigationController.pushViewController(secondController, animated: true)
+        }
+    }
+    
+    public func reopenOrder(navigationController: UINavigationController, order: PmzOrder, buyer: PmzBuyer, appOrderReference: String, callback: PmzSearchCallback) {
+        if isInitialized() && isBuyerWellInitialized(buyer) && isAppOrderReferenceUsable(appOrderReference) && isOrderUsable(order) {
+            getCurrentStatusBarColor()
+            self.buyer = buyer
+            self.appOrderReference = appOrderReference
+            searchCallback = callback
+            navController = navigationController
+            navigationController.isNavigationBarHidden = true
+            presentingVC = navigationController.viewControllers.last
+            let cartVC = PmzCartViewController.init()
+            cartVC.fromReopen = true
+            cartVC.order = order
+            cartVC.store = order.store
+            navigationController.pushViewController(cartVC, animated: true)
         }
     }
     
@@ -226,6 +251,13 @@ public class PaymentezSDK {
     
     func getBundle() -> Bundle? {
         return Bundle(for: PaymentezSDK.self)
+    }
+    
+    func getString(_ key: String) -> String {
+        if let bundle = PaymentezSDK.shared.getBundle() {
+            return NSLocalizedString(key, bundle: bundle, comment: "")
+        }
+        return ""
     }
     
     func onSearchCancelled() {
