@@ -113,12 +113,12 @@
 		C94688F4E61C5F52F9B5D04FD431D61B /* PmzPayAndPlaceVC.xib in Sources */ = {isa = PBXBuildFile; fileRef = ED8076203D6B24E8B6D2C8AC1ABC9C56 /* PmzPayAndPlaceVC.xib */; };
 		CBE7575F501448EEBBCB2A83CBAB7222 /* PmzStoresVC.xib in Sources */ = {isa = PBXBuildFile; fileRef = 95D31D6832897282D4C94EC5677F8DE6 /* PmzStoresVC.xib */; };
 		CE5B7B114ED0C6C7E9F5AC8B1AEDBE20 /* SegmentedPagerTabStripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F357BA4C54F8E75BEB2D88C3A05272DE /* SegmentedPagerTabStripViewController.swift */; };
-		CF37183225BB6F24002942D0 /* PmzLocalizationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF37183025BB6F0B002942D0 /* PmzLocalizationLabel.swift */; };
+		CF37183B25BB7566002942D0 /* PmzLocalizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF37183525BB755F002942D0 /* PmzLocalizationButton.swift */; };
+		CF37183C25BB756A002942D0 /* PmzLocalizationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF37183325BB755F002942D0 /* PmzLocalizationLabel.swift */; };
+		CF37183D25BB756D002942D0 /* PmzLocalizationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF37183425BB755F002942D0 /* PmzLocalizationTextField.swift */; };
+		CF37183E25BB7570002942D0 /* PmzLocalizationTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF37183625BB755F002942D0 /* PmzLocalizationTextView.swift */; };
+		CF37184425BB7622002942D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF37183F25BB7592002942D0 /* Localizable.strings */; };
 		CF73D3A225BA13B60040B97C /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73D3A025BA13A90040B97C /* UINavigationControllerExtension.swift */; };
-		CFE915F125B5E2E80041D971 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE915F325B5E2E80041D971 /* Localizable.strings */; };
-		CFE9160425B5E53D0041D971 /* PmzLocalizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE915EA25B5E0E10041D971 /* PmzLocalizationButton.swift */; };
-		CFE9160525B5E5430041D971 /* PmzLocalizationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE915EC25B5E0FC0041D971 /* PmzLocalizationTextField.swift */; };
-		CFE9160825B5EE210041D971 /* PmzLocalizationTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9160625B5EDF70041D971 /* PmzLocalizationTextView.swift */; };
 		D5A5FB764F159BDCEB0F3FA1E0C4117D /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C03B6A97F1DB07608BECADCD0CD1BD /* UIExtension.swift */; };
 		D66AF4FABFE323EF225CA37439E0BA06 /* ButtonBarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CDDA9E508DF12CC7BD5086CE9F0F60 /* ButtonBarViewCell.swift */; };
 		D73C5BBA9C2B3711BD9F4D2881D02D4B /* PmzPayAndPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5DBD204F7A536CFA038C44D42612A4 /* PmzPayAndPlaceViewController.swift */; };
@@ -321,14 +321,14 @@
 		C8A3BA41FB57A0C25901FE0DD78DD274 /* CustomTabItemCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CustomTabItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		C97185856DA935430140DD5462D53A69 /* CartFooterView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CartFooterView.swift; sourceTree = "<group>"; };
 		CC5EF2844226D0B417EF37A5B9044F98 /* PmzAddress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PmzAddress.swift; sourceTree = "<group>"; };
-		CF37183025BB6F0B002942D0 /* PmzLocalizationLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PmzLocalizationLabel.swift; sourceTree = "<group>"; };
+		CF37183325BB755F002942D0 /* PmzLocalizationLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PmzLocalizationLabel.swift; path = ../Source/Controls/PmzLocalizationLabel.swift; sourceTree = "<group>"; };
+		CF37183425BB755F002942D0 /* PmzLocalizationTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PmzLocalizationTextField.swift; path = ../Source/Controls/PmzLocalizationTextField.swift; sourceTree = "<group>"; };
+		CF37183525BB755F002942D0 /* PmzLocalizationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PmzLocalizationButton.swift; path = ../Source/Controls/PmzLocalizationButton.swift; sourceTree = "<group>"; };
+		CF37183625BB755F002942D0 /* PmzLocalizationTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PmzLocalizationTextView.swift; path = ../Source/Controls/PmzLocalizationTextView.swift; sourceTree = "<group>"; };
+		CF37184025BB7592002942D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Source/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CF37184225BB759A002942D0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Source/es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CF37184325BB759E002942D0 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "Source/es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		CF73D3A025BA13A90040B97C /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
-		CFE915EA25B5E0E10041D971 /* PmzLocalizationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PmzLocalizationButton.swift; sourceTree = "<group>"; };
-		CFE915EC25B5E0FC0041D971 /* PmzLocalizationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PmzLocalizationTextField.swift; sourceTree = "<group>"; };
-		CFE915F225B5E2E80041D971 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		CFE915FF25B5E3E90041D971 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		CFE9160125B5E3F50041D971 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		CFE9160625B5EDF70041D971 /* PmzLocalizationTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PmzLocalizationTextView.swift; sourceTree = "<group>"; };
 		D2073433B225F8B0882756758B359050 /* Pods-PaymentezSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PaymentezSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D32FB78407F7AC7CACA4EC40E9567912 /* ColorCompat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ColorCompat.swift; sourceTree = "<group>"; };
 		D5A2744F65243D45955EAE002D2FB0EE /* SummaryHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SummaryHeaderView.swift; sourceTree = "<group>"; };
@@ -451,6 +451,7 @@
 		1EF6F9440452A5337CD8A41FD4AA0E1C /* PaymentezSDK */ = {
 			isa = PBXGroup;
 			children = (
+				CF37183F25BB7592002942D0 /* Localizable.strings */,
 				2D9A15C0EA24E308749B1E121A2C8EFB /* Image.xcassets */,
 				F448B708C69DAA71B14F24C08166D062 /* Adapters */,
 				B322F5512AA849971630B69BD6F11BBD /* API */,
@@ -462,7 +463,6 @@
 				60063BFBE0E869EF8096393A1587D5A3 /* Utils */,
 				BF051CC7F02D61FBB74B2740AB059E9E /* Views */,
 				CFE915E725B5E08B0041D971 /* Controls */,
-				CFE915F325B5E2E80041D971 /* Localizable.strings */,
 			);
 			name = PaymentezSDK;
 			path = ../..;
@@ -747,10 +747,10 @@
 		CFE915E725B5E08B0041D971 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				CF37183025BB6F0B002942D0 /* PmzLocalizationLabel.swift */,
-				CFE915EA25B5E0E10041D971 /* PmzLocalizationButton.swift */,
-				CFE915EC25B5E0FC0041D971 /* PmzLocalizationTextField.swift */,
-				CFE9160625B5EDF70041D971 /* PmzLocalizationTextView.swift */,
+				CF37183325BB755F002942D0 /* PmzLocalizationLabel.swift */,
+				CF37183525BB755F002942D0 /* PmzLocalizationButton.swift */,
+				CF37183425BB755F002942D0 /* PmzLocalizationTextField.swift */,
+				CF37183625BB755F002942D0 /* PmzLocalizationTextView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1027,7 +1027,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39BB69E5BB901F395F8D8DA7A9CE9CD8 /* Image.xcassets in Resources */,
-				CFE915F125B5E2E80041D971 /* Localizable.strings in Resources */,
+				CF37184425BB7622002942D0 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1102,6 +1102,7 @@
 				6A26D533B0CD7E5DC38E676734A545FF /* CartFooterView.swift in Sources */,
 				5515F5290B263A6A7FEDBCBB4705E87E /* CartFooterView.xib in Sources */,
 				AF80C490D810C929E1C592AF73A8F7AE /* CartHeaderView.swift in Sources */,
+				CF37183C25BB756A002942D0 /* PmzLocalizationLabel.swift in Sources */,
 				0E8CA13A7E3B77A684AF7B9BA71B8151 /* CartHeaderView.xib in Sources */,
 				563C634BC2ADD078AF70C6F21A6BD916 /* CartItemCellView.swift in Sources */,
 				469FE6D2D6CAE71F21B96ECD797A4556 /* CartItemCellView.xib in Sources */,
@@ -1111,7 +1112,6 @@
 				CF73D3A225BA13B60040B97C /* UINavigationControllerExtension.swift in Sources */,
 				C84A2F358062CB73EA79A98ABEB8872F /* FontExtension.swift in Sources */,
 				F131987141B00B78F290F21AE0E7AA0F /* PaymentezSDK-dummy.m in Sources */,
-				CFE9160825B5EE210041D971 /* PmzLocalizationTextView.swift in Sources */,
 				263367D45C93EDBE58C83CBBD89C71F3 /* PaymentezSDK.swift in Sources */,
 				C2E9A80C9BFF7FCE37723BC68617DACD /* PaymentezViewController.swift in Sources */,
 				8C1DC6DEDE725F5C1A1F01EBEAEBC168 /* PmzAddress.swift in Sources */,
@@ -1121,7 +1121,6 @@
 				6AFCE6E22A0AED84E5D80444D25B59D4 /* PmzCartViewController.swift in Sources */,
 				2534E709C3469F956400F870B04A1232 /* PmzCategory.swift in Sources */,
 				4B6AB2BD32ACB63D55FDFCF33FAC7CC3 /* PmzConfiguration.swift in Sources */,
-				CFE9160425B5E53D0041D971 /* PmzLocalizationButton.swift in Sources */,
 				297D72CB719422F50D64D70B9C32B721 /* PmzConfigurationHolder.swift in Sources */,
 				1586DB2EFFF929FA90AE64FDA1CE0E14 /* PmzEncoder.swift in Sources */,
 				2BD2AED14DA2353250EE788B01DBACA0 /* PmzError.swift in Sources */,
@@ -1134,6 +1133,7 @@
 				7A5B1A960E24B45015D6540C36A10C83 /* PmzMenuVC.xib in Sources */,
 				31FB8D5968F9D5E727D0F9070CC29587 /* PmzMenuViewController.swift in Sources */,
 				1A5D061E338CD969BB9125B5A23D8E1F /* PmzOrder.swift in Sources */,
+				CF37183D25BB756D002942D0 /* PmzLocalizationTextField.swift in Sources */,
 				C94688F4E61C5F52F9B5D04FD431D61B /* PmzPayAndPlaceVC.xib in Sources */,
 				D73C5BBA9C2B3711BD9F4D2881D02D4B /* PmzPayAndPlaceViewController.swift in Sources */,
 				FB53A1A63060733F308535C09E65D84A /* PmzPaymentData.swift in Sources */,
@@ -1142,6 +1142,7 @@
 				55A9FC4AA61441FC102957B6F445604B /* PmzProductConfigurationGroup.swift in Sources */,
 				0A64E34F42A8E34B4C2227470439F25C /* PmzProductDisplayProtocol.swift in Sources */,
 				5067639E1D63BE86DD744C892F3E1B8D /* PmzProductOrganizer.swift in Sources */,
+				CF37183B25BB7566002942D0 /* PmzLocalizationButton.swift in Sources */,
 				5E39EA7CCD344C7023216B4B92CF2100 /* PmzProductVC.xib in Sources */,
 				BB100C5E062B1FAAB908C6BABF7E97FC /* PmzProductViewController.swift in Sources */,
 				8D36C33277C05183AEB1AF352BE8A1E5 /* PmzResultVC.xib in Sources */,
@@ -1169,13 +1170,12 @@
 				34478CA7C6F860447480972B4593F930 /* StoreCellView.xib in Sources */,
 				F87DA4C36F188E2B799975C2F8C21655 /* SummaryFooterView.swift in Sources */,
 				B6F7750C21F5148B5199716BB1AD680C /* SummaryFooterView.xib in Sources */,
-				CFE9160525B5E5430041D971 /* PmzLocalizationTextField.swift in Sources */,
 				45F3F2A062860067861CD11A8D8B8612 /* SummaryHeaderView.swift in Sources */,
 				EC2E510276288DA0E8EEEEDAF75C6094 /* SummaryHeaderView.xib in Sources */,
 				EB743B534D294ADAE9837C30FA002247 /* TitleCellView.swift in Sources */,
+				CF37183E25BB7570002942D0 /* PmzLocalizationTextView.swift in Sources */,
 				5AFCEFC0FFB5FE1722C485DC861003C7 /* TitleCellView.xib in Sources */,
 				D5A5FB764F159BDCEB0F3FA1E0C4117D /* UIExtension.swift in Sources */,
-				CF37183225BB6F24002942D0 /* PmzLocalizationLabel.swift in Sources */,
 				B149884342F78D9EE474F8B93B327FC4 /* UILabelExtension.swift in Sources */,
 				4EE5570345D9D113DB71A5AE51453E26 /* UIViewControllerExtension.swift in Sources */,
 				05C37BF756829E1D5D5A87C3656E0A42 /* VirtualCardTabView.xib in Sources */,
@@ -1252,12 +1252,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CFE915F325B5E2E80041D971 /* Localizable.strings */ = {
+		CF37183F25BB7592002942D0 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CFE915F225B5E2E80041D971 /* en */,
-				CFE915FF25B5E3E90041D971 /* es */,
-				CFE9160125B5E3F50041D971 /* es-419 */,
+				CF37184025BB7592002942D0 /* en */,
+				CF37184225BB759A002942D0 /* es */,
+				CF37184325BB759E002942D0 /* es-419 */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

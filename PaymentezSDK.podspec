@@ -26,7 +26,6 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'sdkspaymentez' => 'sdks@paymentez.com' }
   s.source           = { :git => 'https://github.com/paymentez/order_ahead_sdk_ios', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '10.3'
 
@@ -39,7 +38,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  #s.dependency 'AlamofireImage', '~> 4.1'
   s.dependency 'ImageLoader', '~> 0.15.0'
   s.dependency 'XLPagerTabStrip', '~> 9.0'
 end
