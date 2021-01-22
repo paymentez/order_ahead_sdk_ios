@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class I18NLabel: UILabel {
+class PmzLocalizationLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

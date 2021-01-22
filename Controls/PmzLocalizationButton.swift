@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class I18NButton: UIButton {
+class PmzLocalizationButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

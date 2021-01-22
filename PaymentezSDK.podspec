@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '10.3'
 
-  s.source_files = 'Source/**/*.{swift,xib,xcassets}'
+  s.source_files = 'Source/**/*.{swift,xib,xcassets,strings}'
   s.resources = "Source/Controllers/Resources/**/*.xcassets"
   s.swift_version = '5.0'
   # s.resource_bundles = {

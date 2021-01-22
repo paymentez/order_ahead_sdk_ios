@@ -12,7 +12,7 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var nextButton: UIView!
-    @IBOutlet var nextButtonText: UILabel!
+    @IBOutlet var nextButtonText: PmzLocalizationLabel!
     var footerView: ProductFooterView?
     
     var organizer: PmzProductOrganizer

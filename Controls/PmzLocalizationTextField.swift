@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class I18NTextField: UITextField {
+class PmzLocalizationTextField: UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
