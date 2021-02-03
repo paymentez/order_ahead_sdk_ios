@@ -16,7 +16,7 @@ public class PmzStore {
     public var enablePayAtTheTableOrders: Bool?
     public var type: Int?
     public var commerceImage: String?
-    public var commerceFiscalNumber: Int?
+    public var commerceFiscalNumber: String?
     public var subsidiaryId: CLong?
     public var zipCode: String?
     public var companyName: String?
@@ -81,7 +81,7 @@ public class PmzStore {
         if let commerceImage = dictionary["commerce_image"] as? String {
             self.commerceImage = commerceImage
         }
-        if let commerceFiscalNumber = dictionary["commerce_fiscal_number"] as? Int {
+        if let commerceFiscalNumber = dictionary["commerce_fiscal_number"] as? String {
             self.commerceFiscalNumber = commerceFiscalNumber
         }
         if let subsidiaryId = dictionary["subsidiary_id"] as? CLong {
