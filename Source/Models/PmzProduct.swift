@@ -12,7 +12,6 @@ class PmzProduct {
     var appDisplayName: String?
     var displayOrder: CLong?
     var coverImageUrl: String?
-    var storeDisabled: Bool?
     var configurations: [PmzProductConfiguration]?
     
     init(){}
@@ -44,9 +43,6 @@ class PmzProduct {
         }
         if let displayOrder = dictionary["display_order"] as? CLong {
             self.displayOrder = displayOrder
-        }
-        if let storeDisabled = dictionary["store_disabled"] as? Bool {
-            self.storeDisabled = storeDisabled
         }
         if let configurations = dictionary["configurations"] as? NSArray {
             self.configurations = configurations.compactMap({
