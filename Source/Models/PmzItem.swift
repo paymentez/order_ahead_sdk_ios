@@ -17,7 +17,7 @@ public class PmzItem {
     
     init(){}
     
-    init(product: PmzProduct, orderId: CLong) {
+    init(product: PmzProduct, orderId: CLong?) {
         self.orderId = orderId
         self.productId = product.id
         self.annotation = product.description
