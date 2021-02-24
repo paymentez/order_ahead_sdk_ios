@@ -206,14 +206,15 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     }
     
     func itemSelected(_ product: PmzProduct) {
+        let vc = PmzProductViewController.init()
+        vc.order = order
+        vc.store = store
         if let orderId = order?.id {
-            let vc = PmzProductViewController.init()
-            vc.order = order
             vc.orderId = orderId
-            vc.product = product
-            vc.delegate = self
-            PaymentezSDK.shared.pushVC(vc: vc)
         }
+        vc.product = product
+        vc.delegate = self
+        PaymentezSDK.shared.pushVC(vc: vc)
     }
     
     func onItemAddedToOrder(order: PmzOrder) {
@@ -278,11 +279,7 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
             guard let self = self else { return }
             self.menu = menu
             self.initFragments()
-            if !self.fromReopen {
-                self.startOrder()
-            } else {
-                self.dismissPmzLoading()
-            }
+            self.dismissPmzLoading()
             }, failure: { [weak self] (error) in
                 guard let self = self else { return }
                 self.dismissPmzLoading()
@@ -296,19 +293,6 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
                 vc.refreshFilter(filter)
             }
         }
-    }
-    
-    func startOrder() {
-        let orderStarter = PmzOrder(buyer: PaymentezSDK.shared.buyer!, appOrderReference: PaymentezSDK.shared.appOrderReference!, storeId: storeId!)
-        API.sharedInstance.startOrder(order: orderStarter, callback: { [weak self] (order) in
-            guard let self = self else { return }
-            self.order = order
-            self.dismissPmzLoading()
-            }, failure: { [weak self] (error) in
-                guard let self = self else { return }
-                self.dismissPmzLoading()
-                self.backDidPressed(self)
-        })
     }
     
     func initFragments() {

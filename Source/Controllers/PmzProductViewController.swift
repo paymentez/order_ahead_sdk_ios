@@ -51,7 +51,7 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
             changeButtonText()
         } else {
             organizer.setProduct(product: product)
-            item = PmzItem(product: product!, orderId: orderId!)
+            item = PmzItem(product: product!, orderId: orderId)
         }
     }
     
@@ -198,9 +198,32 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
         showLoading()
         item!.setConfigurations(organizer: organizer)
         if !editMode {
-            addItemWConfigurations()
+            if order == nil {
+                startOrder()
+            } else {
+                addItemWConfigurations()
+            }
         } else {
             removeItemWConfigurations()
+        }
+    }
+    
+    func startOrder() {
+        if let storeId = store?.id {
+            let orderStarter = PmzOrder(buyer: PaymentezSDK.shared.buyer!, appOrderReference: PaymentezSDK.shared.appOrderReference!, storeId: storeId)
+            API.sharedInstance.startOrder(order: orderStarter, callback: { [weak self] (order) in
+                guard let self = self else { return }
+                self.order = order
+                self.item?.orderId = order.id
+                self.addItemWConfigurations()
+                }, failure: { [weak self] (error) in
+                    guard let self = self else { return }
+                    self.dismissPmzLoading()
+                    self.backDidPressed(self)
+            })
+        } else {
+            self.dismissPmzLoading()
+            self.showGenericError()
         }
     }
     
