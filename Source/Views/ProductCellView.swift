@@ -6,9 +6,6 @@
 //
 
 import Foundation
-protocol ProductItemDelegate {
-    func itemSelected(_ product: PmzProduct)
-}
 
 public class ProductCellView: UITableViewCell {
     
@@ -20,7 +17,6 @@ public class ProductCellView: UITableViewCell {
     @IBOutlet var addButtonText: UILabel!
     
     var store: PmzProduct?
-    var delegate: ProductItemDelegate?
     
     func configure(product: PmzProduct) {
         self.store = product
@@ -42,14 +38,6 @@ public class ProductCellView: UITableViewCell {
         }
         if let buttonTextColor = PaymentezSDK.shared.style?.buttonTextColor {
             addButtonText?.textColor = buttonTextColor
-        }
-        
-        container.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.didTapContainer)))
-    }
-    
-    @objc func didTapContainer() {
-        if let storeToSend = store {
-            delegate?.itemSelected(storeToSend)
         }
     }
 }

@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ImageLoader.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>PaymentezSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -20,6 +15,11 @@
 			<false/>
 		</dict>
 		<key>Pods-PaymentezSDK_Tests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

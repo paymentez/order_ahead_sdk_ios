@@ -2,22 +2,20 @@ import Foundation
 import UIKit
 
 
-class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UITableViewDataSource, StoreDelegate, UISearchBarDelegate {
+class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     static let PMZ_STORES_VC = "PmzStoresVC"
     
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var magnifyingButton: UIButton!
-    @IBOutlet var searchBarBackground: UIView!
-    @IBOutlet var searchBar: UISearchBar!
-    
-    var stores: [PmzStore]?
-    var filteredStores: [PmzStore]?
-    var menu: PmzMenu?
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var magnifyingButton: UIButton!
+    @IBOutlet weak var searchBarBackground: UIView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var nextButton: UIView!
     
     var filter: String = ""
-    
-    @IBOutlet var nextButton: UIView!
+    var stores: [PmzStore]?
+    var filteredStores: [PmzStore]?
+    weak var menu: PmzMenu?
     
     init() {
         super.init(nibName: PmzStoresViewController.PMZ_STORES_VC, bundle: PaymentezSDK.shared.getBundle())
@@ -34,6 +32,10 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
         setSearchBar()
         setColors()
         startSession()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setSearchBar() {
@@ -65,21 +67,24 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     @IBAction func backDidPressed(_ sender: Any) {
         if searchBar.isHidden {
-           self.navigationController?.popViewController(animated: true)
             chnageStatusBarToOriginal()
-           PaymentezSDK.shared.onSearchCancelled()
+            PaymentezSDK.shared.onSearchCancelled()
+            freeMemory()
         } else {
-           searchBar.text = ""
-           refreshFilter("")
-           searchBarBackground.isHidden = true
-           searchBar.isHidden = true
+            searchBar.text = ""
+            refreshFilter("")
+            searchBarBackground.isHidden = true
+            searchBar.isHidden = true
         }
+    }
+    
+    func freeMemory() {
+        stores = nil
+        filteredStores = nil
+        menu = nil
+        tableView = nil
     }
     
     func refreshFilter(_ filter: String) {
@@ -100,28 +105,6 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
                 }
             }
         }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredStores != nil ? filteredStores!.count : 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StoreCellView") as! StoreCellView
-        cell.configure(store: filteredStores![indexPath.row])
-        cell.delegate = self
-        return cell
-    }
-    
-    func itemSelected(_ store: PmzStore) {
-        let secondController = PmzMenuViewController.init()
-        secondController.store = store
-        PaymentezSDK.shared.pushVC(vc: secondController)
-    }
-    
-    @IBAction func onSearchPressed(_ sender: Any) {
-        searchBar.isHidden = false
-        searchBarBackground.isHidden = false
     }
     
     func startSession() {
@@ -149,5 +132,33 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
                 self.dismissPmzLoading()
                 self.goBackToHostApp()
         })
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredStores != nil ? filteredStores!.count : 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StoreCellView") as! StoreCellView
+        cell.configure(store: filteredStores![indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        if let storeSelected = stores?[indexPath.row] {
+            itemSelected(storeSelected)
+        }
+    }
+    
+    func itemSelected(_ store: PmzStore) {
+        let secondController = PmzMenuViewController.init()
+        secondController.store = store
+        PaymentezSDK.shared.pushVC(vc: secondController)
+    }
+    
+    @IBAction func onSearchPressed(_ sender: Any) {
+        searchBar.isHidden = false
+        searchBarBackground.isHidden = false
     }
 }

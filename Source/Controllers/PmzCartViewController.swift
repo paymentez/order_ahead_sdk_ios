@@ -11,8 +11,8 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
     
     static let PMZ_CART_VC = "PmzCartVC"
     
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var nextButton: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nextButton: UIView!
     var footerView: CartFooterView?
     
     var store: PmzStore?
@@ -201,9 +201,16 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
     @IBAction func backDidPressed(_ sender: Any) {
         if fromReopen {
             goBackToPmzMenu()
+            freeMemory()
         } else {
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    func freeMemory() {
+        footerView = nil
+        store = nil
+        order = nil
     }
     
     func goBackToPmzMenu() {
