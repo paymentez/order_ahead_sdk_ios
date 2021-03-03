@@ -5,27 +5,27 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     
     static let PMZ_MENU_VC = "PmzMenuVC"
 
-    @IBOutlet var headerImage: UIImageView!
-    @IBOutlet var storeTitle: UILabel!
-    @IBOutlet var storeSubtitle: UILabel!
-    @IBOutlet var storeDistance: UILabel!
-    @IBOutlet var storeLogo: UIImageView!
+    @IBOutlet weak var headerImage: UIImageView!
+    @IBOutlet weak var storeTitle: UILabel!
+    @IBOutlet weak var storeSubtitle: UILabel!
+    @IBOutlet weak var storeDistance: UILabel!
+    @IBOutlet weak var storeLogo: UIImageView!
     
-    @IBOutlet var nextButton: UIView!
-    @IBOutlet var container: UIScrollView!
-    @IBOutlet var headerBar: UIView!
-    @IBOutlet var nextButtonBackground: UIView!
-    @IBOutlet var nextButtonText: UILabel!
-    @IBOutlet var backButton: UIButton!
-    @IBOutlet var headerTitle: UILabel!
+    @IBOutlet weak var nextButton: UIView!
+    @IBOutlet weak var container: UIScrollView!
+    @IBOutlet weak var headerBar: UIView!
+    @IBOutlet weak var nextButtonBackground: UIView!
+    @IBOutlet weak var nextButtonText: UILabel!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var headerTitle: UILabel!
     
-    @IBOutlet var magnifyButton: UIButton!
-    @IBOutlet var cartButton: UIButton!
-    @IBOutlet var searchBarBackground: UIView!
-    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet weak var magnifyButton: UIButton!
+    @IBOutlet weak var cartButton: UIButton!
+    @IBOutlet weak var searchBarBackground: UIView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var storeId: CLong?
-    var store: PmzStore?
+    weak var store: PmzStore?
     var menu: PmzMenu?
     var order: PmzOrder?
     

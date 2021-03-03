@@ -10,17 +10,17 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
     public static let ITEM_INDEX = 1
     static let PMZ_PRODUCT_VC = "PmzProductVC"
     
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var nextButton: UIView!
-    @IBOutlet var nextButtonText: PmzLocalizationLabel!
-    var footerView: ProductFooterView?
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nextButton: UIView!
+    @IBOutlet weak var nextButtonText: PmzLocalizationLabel!
+    weak var footerView: ProductFooterView?
     
     var organizer: PmzProductOrganizer
     var product: PmzProduct?
     var orderId: CLong?
     var order: PmzOrder?
     var item: PmzItem?
-    var store: PmzStore?
+    weak var store: PmzStore?
     
     var delegate: PmzProductVCDelegate?
     

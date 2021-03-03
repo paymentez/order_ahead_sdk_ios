@@ -23,6 +23,8 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
     
     var lastSelectedTextField: UITextField?
     
+    var alert: UIAlertController?
+    
     var backgroundColorSelected: Color?
     var textColorSelected: Color?
     var buttonColorSelected: Color?
@@ -266,16 +268,21 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
     }
     
     func showToast(controller: UIViewController, message : String, seconds: Double) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.view.backgroundColor = UIColor.black
-        alert.view.alpha = 0.6
-        alert.view.layer.cornerRadius = 15
+        /*alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert!.view.backgroundColor = UIColor.black
+        alert!.view.alpha = 0.6
+        alert!.view.layer.cornerRadius = 15
+        alert!.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector (self.dismissAlert)))
 
-        controller.present(alert, animated: true)
+        controller.present(alert!, animated: true)
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
-            alert.dismiss(animated: true)
-        }
+            self.alert!.dismiss(animated: true)
+        }*/
+    }
+    
+    @objc func dismissAlert() {
+        alert?.dismiss(animated: true)
     }
     
     func setLMColors() {

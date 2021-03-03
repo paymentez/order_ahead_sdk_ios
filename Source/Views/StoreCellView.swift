@@ -7,22 +7,17 @@
 
 import Foundation
 
-protocol StoreDelegate {
-    func itemSelected(_ store: PmzStore)
-}
-
 public class StoreCellView: UITableViewCell {
     
-    @IBOutlet var container: CardView!
-    @IBOutlet var headerImage: UIImageView!
-    @IBOutlet var title: UILabel!
-    @IBOutlet var subtitle: UILabel!
-    @IBOutlet var logo: UIImageView!
-    @IBOutlet var logoContainer: UIView!
-    @IBOutlet var distance: UILabel!
+    @IBOutlet weak var container: CardView!
+    @IBOutlet weak var headerImage: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var subtitle: UILabel!
+    @IBOutlet weak var logo: UIImageView!
+    @IBOutlet weak var logoContainer: UIView!
+    @IBOutlet weak var distance: UILabel!
     
-    var store: PmzStore?
-    var delegate: StoreDelegate?
+    weak var store: PmzStore?
     
     func configure(store: PmzStore) {
         self.store = store
@@ -46,17 +41,9 @@ public class StoreCellView: UITableViewCell {
         }
         
         container.setCornerRadius(cornerRadius: 10)
-        
-        container.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.didTapContainer)))
     }
     
     func setImageCorners() {
         headerImage.roundCorners(corners: [.topLeft, .topRight], radius: 10)
-    }
-    
-    @objc func didTapContainer() {
-        if let storeToSend = store {
-            delegate?.itemSelected(storeToSend)
-        }
     }
 }

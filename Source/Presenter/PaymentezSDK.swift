@@ -261,36 +261,51 @@ public class PaymentezSDK {
     }
     
     func onSearchCancelled() {
-        goBackToHostApp()
+        goBackToHostApp(freing: false)
         searchCallback?.searchCancelled()
+        freeVariables()
         searchCallback = nil
     }
     
     func onSearchFinished(order: PmzOrder) {
-        goBackToHostApp()
+        goBackToHostApp(freing: false)
         searchCallback?.searchFinishedSuccessfully(order: order)
+        freeVariables()
         searchCallback = nil
     }
     
     func onPaymentCheckingFinished(order: PmzOrder) {
-        goBackToHostApp()
+        goBackToHostApp(freing: false)
         paymentCheckerCallback?.payAndPlaceFinishedSuccessfully(order: PmzOrder())
+        freeVariables()
         paymentCheckerCallback = nil
     }
     
     func onPaymentCheckingError(order: PmzOrder, error: PmzError) {
-        goBackToHostApp()
+        goBackToHostApp(freing: false)
         paymentCheckerCallback?.payAndPlaceOnError(order: order, error: error)
+        freeVariables()
         paymentCheckerCallback = nil
     }
     
-    private func goBackToHostApp() {
+    private func goBackToHostApp(freing: Bool? = true) {
         UIFont.overrideToDefault()
         if(presentingVC != nil) {
             navController?.popToViewController(presentingVC!, animated: true)
         } else {
             navController?.popToRootViewController(animated: true)
         }
+        if let freing = freing, freing {
+            freeVariables()
+        }
+    }
+    
+    func freeVariables() {
+        navController = nil
+        presentingVC = nil
+        searchCallback = nil
+        paymentCheckerCallback = nil
+        getStoresCallback = nil
     }
     
     public func goBackWithServiceError() {

@@ -13,7 +13,7 @@ protocol PmzMenuFragmentDelegate {
     func getFilter() -> String
 }
 
-class PmzMenuFragmentVC: UIViewController, IndicatorInfoProvider, UITableViewDelegate, UITableViewDataSource, ProductItemDelegate {
+class PmzMenuFragmentVC: UIViewController, IndicatorInfoProvider, UITableViewDelegate, UITableViewDataSource {
     
     static let PMZ_MENU_FRAGMENT = "PmzMenuFragmentVC"
     
@@ -74,8 +74,13 @@ class PmzMenuFragmentVC: UIViewController, IndicatorInfoProvider, UITableViewDel
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCellView") as! ProductCellView
         cell.configure(product: filteredProducts![indexPath.row])
-        cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let product = filteredProducts?[indexPath.row] {
+            itemSelected(product)
+        }
     }
     
     func itemSelected(_ product: PmzProduct) {
