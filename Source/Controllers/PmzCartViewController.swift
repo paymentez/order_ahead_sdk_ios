@@ -218,11 +218,6 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
         menu.store = store
         menu.order = order
         menu.fromReopen = true
-        /*let transition = CATransition()
-        transition.duration = 0.2
-        transition.type = CATransitionType.fade
-        transition.subtype = CATransitionSubtype.fromRight
-        self.navigationController?.view.layer.add(transition, forKey: kCATransition)*/
         self.navigationController?.pushViewController(menu, animated: false)
     }
     
