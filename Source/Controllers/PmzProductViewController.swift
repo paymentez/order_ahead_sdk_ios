@@ -53,6 +53,13 @@ class PmzProductViewController: PaymentezViewController, UITableViewDelegate, UI
             organizer.setProduct(product: product)
             item = PmzItem(product: product!, orderId: orderId)
         }
+        setProperColors()
+    }
+    
+    func setProperColors() {
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            tableView.backgroundColor = backgroundColor
+        }
     }
     
     func changeButtonText() {

@@ -12,6 +12,7 @@ protocol ProductFooterDelegate {
 }
 
 class ProductFooterView: UITableViewCell {
+    @IBOutlet var container: UIView!
     @IBOutlet var quantityTitle: UILabel!
     @IBOutlet var totalTitle: UILabel!
     @IBOutlet var totalPrice: UILabel!
@@ -39,6 +40,10 @@ class ProductFooterView: UITableViewCell {
             totalPrice.textColor = textColor
             totalTitle.textColor = textColor
             amount.textColor = textColor
+        }
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            container.backgroundColor = backgroundColor
+            contentView.backgroundColor = backgroundColor
         }
     }
     

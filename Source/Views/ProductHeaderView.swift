@@ -9,6 +9,7 @@ import Foundation
 
 class ProductHeaderView: UITableViewCell {
     
+    @IBOutlet var container: UIView!
     @IBOutlet var productImage: UIImageView!
     @IBOutlet var name: UILabel!
     @IBOutlet var desc: UILabel!
@@ -24,6 +25,14 @@ class ProductHeaderView: UITableViewCell {
             }
             price.text = CurrencyUtils.getPrice(product.currentPrice)
             PmzImageUtils.loadImage(product.imageUrl, imageView: productImage)
+        }
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            container.backgroundColor = backgroundColor
+            contentView.backgroundColor = backgroundColor
+        }
+        if let textColor = PaymentezSDK.shared.style?.textColor {
+            name.textColor = textColor
+            desc.textColor = textColor
         }
     }
     

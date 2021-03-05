@@ -13,5 +13,8 @@ class RadioButtonItem: UIView {
     
     func configure(config: PmzProductConfiguration) {
         label.text = config.name
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            self.backgroundColor = backgroundColor
+        }
     }
 }

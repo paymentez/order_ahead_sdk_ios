@@ -9,6 +9,7 @@ import Foundation
 
 class SummaryHeaderView: UITableViewCell {
     
+    @IBOutlet var container: UIView!
     @IBOutlet var firstLine: UILabel!
     @IBOutlet var secondLine: UILabel!
     @IBOutlet var headerImage: UIImageView!
@@ -30,6 +31,10 @@ class SummaryHeaderView: UITableViewCell {
             name.textColor = textColor
             desc.textColor = textColor
             summaryTitle.textColor = textColor
+        }
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            container.backgroundColor = backgroundColor
+            contentView.backgroundColor = backgroundColor
         }
     }
 }

@@ -65,6 +65,9 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
                 }
             }
         }
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            tableView.backgroundColor = backgroundColor
+        }
     }
     
     @IBAction func backDidPressed(_ sender: Any) {

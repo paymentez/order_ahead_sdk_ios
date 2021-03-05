@@ -29,6 +29,13 @@ class PmzSummaryViewController: PaymentezViewController, UITableViewDelegate, UI
         store = order?.store
         nextButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.finishFlow)))
         setTableView()
+        setProperColors()
+    }
+    
+    func setProperColors() {
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            tableView.backgroundColor = backgroundColor
+        }
     }
    
     func setTableView() {

@@ -35,6 +35,13 @@ class PmzMenuFragmentVC: UIViewController, IndicatorInfoProvider, UITableViewDel
             filter = delegate.getFilter()
             refreshFilter(filter)
         }
+        setProperColors()
+    }
+    
+    func setProperColors() {
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            tableView.backgroundColor = backgroundColor
+        }
     }
    
     required init?(coder: NSCoder) {

@@ -9,6 +9,7 @@ import Foundation
 
 class SummaryFooterView: UITableViewCell {
     
+    @IBOutlet var container: UIView!
     @IBOutlet var totalPaymentTitle: UILabel!
     @IBOutlet var totalPayment: UILabel!
     
@@ -16,6 +17,10 @@ class SummaryFooterView: UITableViewCell {
         if let textColor = PaymentezSDK.shared.style?.textColor {
             totalPaymentTitle.textColor = textColor
             totalPayment.textColor = textColor
+        }
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            container.backgroundColor = backgroundColor
+            contentView.backgroundColor = backgroundColor
         }
     }
     

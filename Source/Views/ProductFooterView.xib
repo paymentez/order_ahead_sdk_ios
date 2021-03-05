@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="product_footer_quantity" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAh-Fb-HPi" customClass="PmzLocalizationLabel" customModule="PaymentezSDK" customModuleProvider="target">
-                                <rect key="frame" x="10" y="15" width="181.5" height="20"/>
+                                <rect key="frame" x="10" y="15" width="186" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -35,7 +37,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="gpQ-YD-hmR" firstAttribute="leading" secondItem="Tj0-45-DxF" secondAttribute="leading" constant="10" id="6AW-XQ-tes"/>
                                     <constraint firstAttribute="height" constant="30" id="GqF-fp-I81"/>
@@ -80,7 +82,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="xR1-yj-EZK" secondAttribute="bottom" constant="10" id="2RB-4V-4WV"/>
                                     <constraint firstItem="xR1-yj-EZK" firstAttribute="leading" secondItem="gf1-ao-lql" secondAttribute="leading" constant="10" id="L03-PD-PuP"/>
@@ -91,7 +93,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="product_footer_total" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amA-73-Vzv" customClass="PmzLocalizationLabel" customModule="PaymentezSDK" customModuleProvider="target">
-                                <rect key="frame" x="246" y="15.5" width="153" height="19.5"/>
+                                <rect key="frame" x="241" y="15.5" width="158" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -138,6 +140,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="amount" destination="Emx-20-p8B" id="LDH-0f-Avq"/>
+                <outlet property="container" destination="3MZ-IS-WhF" id="yr5-fh-rmw"/>
                 <outlet property="minusButton" destination="Tj0-45-DxF" id="mBU-yD-NSP"/>
                 <outlet property="minusImage" destination="gpQ-YD-hmR" id="m2d-XN-Lxb"/>
                 <outlet property="plusButton" destination="gf1-ao-lql" id="jaz-Pc-83B"/>

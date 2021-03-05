@@ -11,6 +11,7 @@ class CartFooterView: UITableViewCell, UITextViewDelegate {
     
     static var placeholder = ""
     
+    @IBOutlet var container: UIView!
     @IBOutlet var totalPaymentTitle: UILabel!
     @IBOutlet var totalPayment: UILabel!
     @IBOutlet var comment: UITextView!
@@ -23,6 +24,10 @@ class CartFooterView: UITableViewCell, UITextViewDelegate {
         CartFooterView.placeholder = PaymentezSDK.shared.getString("cart_add_instructions_placeholder")
         comment.text = CartFooterView.placeholder
         comment.delegate = self
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            container.backgroundColor = backgroundColor
+            contentView.backgroundColor = backgroundColor
+        }
     }
     
     func setPrice(price: Double?) {

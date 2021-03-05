@@ -286,8 +286,8 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
     }
     
     func setLMColors() {
-        didPickBackgroundColor(Color(name: "Blanco", color: UIColor(named: "LMWhite")!))
-        didPickTextColor(Color(name: "LM Negro", color: UIColor(named: "LMBlack")!))
+        didPickBackgroundColor(Color(name: "Azul", color: UIColor(named: "sdkBlue")!))
+        didPickTextColor(Color(name: "LM Negro", color: UIColor(named: "LMWhite")!))
         didPickButtonColor(Color(name: "LM Color Principal", color: UIColor(named: "LMRed")!))
         didPickButtonTextColor(Color(name: "Blanco", color: UIColor(named: "LMWhite")!))
     }

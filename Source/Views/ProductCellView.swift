@@ -39,5 +39,9 @@ public class ProductCellView: UITableViewCell {
         if let buttonTextColor = PaymentezSDK.shared.style?.buttonTextColor {
             addButtonText?.textColor = buttonTextColor
         }
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            container.backgroundColor = backgroundColor
+            contentView.backgroundColor = backgroundColor
+        }
     }
 }

@@ -38,9 +38,14 @@ public class StoreCellView: UITableViewCell {
         if let style = PaymentezSDK.shared.style, let textColor = style.textColor {
             title.textColor = textColor
             subtitle.textColor = textColor
+            distance.textColor = textColor
         }
         
         container.setCornerRadius(cornerRadius: 10)
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            container.backgroundColor = backgroundColor
+            contentView.backgroundColor = backgroundColor
+        }
     }
     
     func setImageCorners() {

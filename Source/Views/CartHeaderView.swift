@@ -13,6 +13,7 @@ protocol CartHeaderDelegate {
 
 class CartHeaderView: UITableViewCell {
     
+    @IBOutlet var container: UIView!
     @IBOutlet var storeName: UILabel!
     @IBOutlet var storeDesc: UILabel!
     @IBOutlet var storeLogo: UIImageView!
@@ -39,6 +40,10 @@ class CartHeaderView: UITableViewCell {
         }
         if let textColor = PaymentezSDK.shared.style?.buttonTextColor {
             keepBuyingText.textColor = textColor
+        }
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            container.backgroundColor = backgroundColor
+            contentView.backgroundColor = backgroundColor
         }
     }
     

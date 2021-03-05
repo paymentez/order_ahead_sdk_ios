@@ -11,6 +11,7 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
     
     static let PMZ_CART_VC = "PmzCartVC"
     
+    @IBOutlet var backgroundContainer: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextButton: UIView!
     var footerView: CartFooterView?
@@ -36,6 +37,14 @@ class PmzCartViewController: PaymentezViewController, UITableViewDelegate, UITab
         setTableView()
         if(fromReopen) {
             startSession()
+        }
+        setProperColors()
+    }
+    
+    func setProperColors() {
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            tableView.backgroundColor = backgroundColor
+            backgroundContainer.backgroundColor = backgroundColor
         }
     }
     

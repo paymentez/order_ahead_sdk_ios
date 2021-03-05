@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -14,10 +17,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PmzMenuViewController" customModule="PaymentezSDK" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="WK2-4R-pek" id="qJO-yT-rin"/>
-                <outlet property="buttonBarView" destination="sOB-yt-sZm" id="ZkH-yd-j2m"/>
+                <outlet property="buttonBarView" destination="sOB-yt-sZm" id="mDW-iO-A0L"/>
                 <outlet property="cartButton" destination="Lir-wk-Iee" id="gTF-ow-PXD"/>
                 <outlet property="containerView" destination="ySc-HA-r8h" id="fnS-la-hMq"/>
+                <outlet property="footerContainer" destination="caT-V3-z9Q" id="t1L-DX-unU"/>
                 <outlet property="headerBar" destination="h8t-OU-Ym6" id="3ls-Mt-tCv"/>
+                <outlet property="headerContainer" destination="KsM-C0-bd4" id="Wcd-UR-e11"/>
                 <outlet property="headerImage" destination="0U2-1z-wIB" id="9gg-IL-aAQ"/>
                 <outlet property="headerTitle" destination="gFl-ZB-cKC" id="fIh-LB-EvG"/>
                 <outlet property="magnifyButton" destination="Do7-5o-6TS" id="9Ax-iu-Ll4"/>
@@ -39,7 +44,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h8t-OU-Ym6" userLabel="Header Bar">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WK2-4R-pek">
                             <rect key="frame" x="0.0" y="6" width="48" height="48"/>
@@ -85,7 +90,7 @@
                         </button>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OHE-8u-eZJ">
                             <rect key="frame" x="48" y="0.0" width="366" height="60"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <searchBar hidden="YES" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="IlZ-cF-Lz2">
                             <rect key="frame" x="48" y="0.0" width="366" height="60"/>
@@ -118,7 +123,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KsM-C0-bd4">
-                    <rect key="frame" x="0.0" y="60" width="414" height="194"/>
+                    <rect key="frame" x="0.0" y="104" width="414" height="194"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="500" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0U2-1z-wIB">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="134"/>
@@ -196,7 +201,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="5nh-uZ-rSI" firstAttribute="top" secondItem="0U2-1z-wIB" secondAttribute="bottom" constant="-29" id="3K6-NT-u5D"/>
                         <constraint firstAttribute="trailing" secondItem="5nh-uZ-rSI" secondAttribute="trailing" constant="17" id="80y-dl-ipc"/>
@@ -219,7 +224,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sOB-yt-sZm" customClass="ButtonBarView" customModule="XLPagerTabStrip">
-                    <rect key="frame" x="0.0" y="254" width="414" height="48"/>
+                    <rect key="frame" x="0.0" y="298" width="414" height="48"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="fxw-lU-JiS"/>
@@ -233,19 +238,19 @@
                     <cells/>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caT-V3-z9Q">
-                    <rect key="frame" x="0.0" y="302" width="414" height="594"/>
+                    <rect key="frame" x="0.0" y="346" width="414" height="516"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySc-HA-r8h">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="532"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="454"/>
                         </scrollView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38V-6K-VWJ">
-                            <rect key="frame" x="16" y="532" width="382" height="45"/>
+                            <rect key="frame" x="16" y="454" width="382" height="45"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4d2-S9-YIU">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="45"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="menu_view_cart_button" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbw-BE-OwC" customClass="PmzLocalizationLabel" customModule="PaymentezSDK" customModuleProvider="target">
-                                            <rect key="frame" x="102.5" y="12" width="177" height="21"/>
+                                            <rect key="frame" x="99" y="12" width="184.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -273,7 +278,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="38V-6K-VWJ" secondAttribute="bottom" constant="17" id="2V2-hR-etV"/>
                         <constraint firstItem="38V-6K-VWJ" firstAttribute="top" secondItem="ySc-HA-r8h" secondAttribute="bottom" id="2te-i0-KcF"/>
@@ -285,7 +290,8 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sOB-yt-sZm" secondAttribute="trailing" id="B0K-em-ZWV"/>
                 <constraint firstItem="caT-V3-z9Q" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CaK-km-BMj"/>
@@ -301,7 +307,6 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="caT-V3-z9Q" secondAttribute="trailing" id="ovH-NS-h3g"/>
                 <constraint firstItem="sOB-yt-sZm" firstAttribute="top" secondItem="KsM-C0-bd4" secondAttribute="bottom" id="xdK-Cz-roq"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="142"/>
         </view>
     </objects>
@@ -309,5 +314,8 @@
         <image name="menu_cart" width="21.333333969116211" height="21.333333969116211"/>
         <image name="menu_magnifying_glass" width="21.333333969116211" height="21.333333969116211"/>
         <image name="paymentezBackButton" width="17" height="17"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

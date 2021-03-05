@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -43,7 +42,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Mwh-LX-FBf" secondAttribute="bottom" id="3fQ-Iz-Rtg"/>
                                     <constraint firstAttribute="trailing" secondItem="jeF-0x-vqt" secondAttribute="trailing" id="BZq-DR-gLc"/>
@@ -93,15 +92,11 @@
                 <outlet property="container" destination="tAn-1T-69W" id="bZ6-Bx-MBQ"/>
                 <outlet property="content" destination="Mwh-LX-FBf" id="EqY-XW-iIu"/>
                 <outlet property="img" destination="zef-73-B8V" id="gy9-cX-T8N"/>
+                <outlet property="innerContainer" destination="ALW-MG-8pp" id="1jU-xL-bUi"/>
                 <outlet property="name" destination="jeF-0x-vqt" id="QcV-b9-mA5"/>
                 <outlet property="price" destination="DjD-Md-nuE" id="UOh-TU-dSf"/>
             </connections>
             <point key="canvasLocation" x="156.52173913043478" y="204.91071428571428"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

@@ -30,6 +30,13 @@ class ProductConfigurationItemCellView: UITableViewCell {
         setPropperImage(item.isChecked())
         label.text = item.name
         price.text = "+" + CurrencyUtils.getPrice(item.extraPrice)
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            container.backgroundColor = backgroundColor
+            contentView.backgroundColor = backgroundColor
+        }
+        if let textColor = PaymentezSDK.shared.style?.textColor {
+            label.textColor = textColor
+        }
     }
     
     @objc func onItemClicked() {

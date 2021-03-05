@@ -11,6 +11,8 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     @IBOutlet weak var storeDistance: UILabel!
     @IBOutlet weak var storeLogo: UIImageView!
     
+    @IBOutlet var headerContainer: UIView!
+    @IBOutlet var footerContainer: UIView!
     @IBOutlet weak var nextButton: UIView!
     @IBOutlet weak var container: UIScrollView!
     @IBOutlet weak var headerBar: UIView!
@@ -84,9 +86,12 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
                         return 140
                     }
         })
-        
-        settings.style.buttonBarBackgroundColor = .white
-        settings.style.buttonBarItemBackgroundColor = .white
+        var color = UIColor.white
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            color = backgroundColor
+        }
+        settings.style.buttonBarBackgroundColor = color
+        settings.style.buttonBarItemBackgroundColor = color
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
         settings.style.selectedBarHeight = 2.0
         settings.style.buttonBarMinimumLineSpacing = 0
@@ -151,6 +156,10 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
                 }
             }
         }
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            headerContainer.backgroundColor = backgroundColor
+            footerContainer.backgroundColor = backgroundColor
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -182,6 +191,7 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
             if let style = PaymentezSDK.shared.style, let textColor = style.textColor {
                 storeTitle.textColor = textColor
                 storeSubtitle.textColor = textColor
+                storeDistance.textColor = textColor
             }
         }
     }
