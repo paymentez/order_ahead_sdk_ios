@@ -222,6 +222,7 @@
 		CD52243A9FD32D23F5AEB425E08C7DFE /* SDImageCoderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BED9912A6650496A3CC79616C35246E3 /* SDImageCoderHelper.m */; };
 		CD5B6E1B6C592800F5B4DE064D5CA878 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F08B871AC0C8D722B4DAAA290967AD /* UIView+WebCacheOperation.m */; };
 		CF10814B25EFF562002684C3 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF10814A25EFF562002684C3 /* TableViewExtension.swift */; };
+		CF1081B625F2D0EE002684C3 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1081B525F2D0ED002684C3 /* UIApplicationExtension.swift */; };
 		D18CB23B6D9F231EE48F3433F08B37BC /* PmzResultVC.xib in Sources */ = {isa = PBXBuildFile; fileRef = A84E338E4A558B2EF7ADE795B11A773C /* PmzResultVC.xib */; };
 		D1E880E0B0676F4B669B54A8D00A7CF1 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 340D86094DDE252F5E9DDD081682246F /* UIButton+WebCache.m */; };
 		D26FF3CFBA3D792589DFDF9D62C89818 /* PmzProductOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D522EAA7C70E7D140A89AE76AF31013E /* PmzProductOrganizer.swift */; };
@@ -563,6 +564,7 @@
 		CA9D0FC7DB168FEEF884C3DF2C2F5516 /* SDImageFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageFrame.h; path = SDWebImage/Core/SDImageFrame.h; sourceTree = "<group>"; };
 		CADE444BB9AC32F0E76E8079A9491BB2 /* SDWebImageDefine.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDefine.m; path = SDWebImage/Core/SDWebImageDefine.m; sourceTree = "<group>"; };
 		CF10814A25EFF562002684C3 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
+		CF1081B525F2D0ED002684C3 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		CF76F0D7877CB869CBE5E330B51429EA /* SDImageAssetManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageAssetManager.m; path = SDWebImage/Private/SDImageAssetManager.m; sourceTree = "<group>"; };
 		D05BC63E0D395DE01BF9B4624B2D0946 /* SDWebImageDownloaderRequestModifier.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloaderRequestModifier.m; path = SDWebImage/Core/SDWebImageDownloaderRequestModifier.m; sourceTree = "<group>"; };
 		D1D25BA4E438EC76A3E686820A7E4D84 /* SDWebImageIndicator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageIndicator.h; path = SDWebImage/Core/SDWebImageIndicator.h; sourceTree = "<group>"; };
@@ -1061,6 +1063,7 @@
 				805F79CE3A4A9BD2163A2F0279C99286 /* UILabelExtension.swift */,
 				3107952C7BB364269AAD50DAC091E207 /* UINavigationControllerExtension.swift */,
 				A1566899E5CEF2310692D5C83BB46D00 /* UIViewControllerExtension.swift */,
+				CF1081B525F2D0ED002684C3 /* UIApplicationExtension.swift */,
 			);
 			name = Utils;
 			path = Source/Utils;
@@ -1665,6 +1668,7 @@
 				CF10814B25EFF562002684C3 /* TableViewExtension.swift in Sources */,
 				3AE9802C94E543D569F643C79ACDE539 /* CartFooterView.xib in Sources */,
 				9F80C889DD955509953B65F450EA2D3E /* CartHeaderView.swift in Sources */,
+				CF1081B625F2D0EE002684C3 /* UIApplicationExtension.swift in Sources */,
 				7D2AD13099BE3427B3FBBA4B2AB4704B /* CartHeaderView.xib in Sources */,
 				A967DDD694F498042A909BD3586D3B49 /* CartItemCellView.swift in Sources */,
 				9C58B0BA53B04DEF35255BE46318721A /* CartItemCellView.xib in Sources */,

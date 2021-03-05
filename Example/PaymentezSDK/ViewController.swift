@@ -102,6 +102,7 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
             .setTextColor(textColorSelected!.color!)
             .setButtonBackgroundColor(buttonColorSelected!.color!)
             .setButtonTextColor(buttonTextColorSelected!.color!)
+            .setOriginalStatusBarColor(UIColor.white)
             .setFont(PmzFont.SYSTEM)
     }
     

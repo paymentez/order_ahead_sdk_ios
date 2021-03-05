@@ -314,6 +314,7 @@ public class PaymentezSDK {
     
     private func goBackToHostApp(freing: Bool? = true) {
         UIFont.overrideToDefault()
+        changeStatusBarBackToOriginalColor()
         if(presentingVC != nil) {
             navController?.popToViewController(presentingVC!, animated: true)
         } else {
@@ -324,7 +325,26 @@ public class PaymentezSDK {
         }
     }
     
-    func freeVariables() {
+    private func changeStatusBarBackToOriginalColor() {
+        if let originalColor = style?.originalStatusBarColor {
+            let sharedApplication = UIApplication.shared
+            sharedApplication.delegate?.window??.tintColor = originalColor
+
+            if #available(iOS 13.0, *) {
+                  let statusBar =  UIView()
+                  statusBar.frame = UIApplication.shared.statusBarFrame
+                  statusBar.backgroundColor = originalColor
+                  UIApplication.shared.keyWindow?.addSubview(statusBar)
+              } else {
+                  guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else {
+                          return
+                      }
+                  statusBarView.backgroundColor = originalColor
+            }
+        }
+    }
+    
+    private func freeVariables() {
         navController = nil
         presentingVC = nil
         searchCallback = nil

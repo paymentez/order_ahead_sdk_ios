@@ -13,6 +13,7 @@ public class PmzStyle {
     var textColor: UIColor?
     var buttonBackgroundColor: UIColor?
     var buttonTextColor: UIColor?
+    var originalStatusBarColor: UIColor?
     
     public init(){}
     
@@ -38,6 +39,11 @@ public class PmzStyle {
     
     public func setFont(_ font: PmzFont) -> PmzStyle {
         self.font = font
+        return self
+    }
+    
+    public func setOriginalStatusBarColor(_ originalStatusBarColor: UIColor) -> PmzStyle {
+        self.originalStatusBarColor = originalStatusBarColor
         return self
     }
     
