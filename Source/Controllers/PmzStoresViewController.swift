@@ -149,7 +149,7 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        if let storeSelected = stores?[indexPath.row] {
+        if let storeSelected = filteredStores?[indexPath.row] {
             itemSelected(storeSelected)
         }
     }

@@ -27,6 +27,7 @@ public class PaymentezSDK {
     var buyer: PmzBuyer?
     var appOrderReference: String?
     var sdkFontIsShowing: Bool = false
+    var production: Bool = false
     var hostStatusBarColor: UIColor?
     
     var searchCallback: PmzSearchCallback?
@@ -37,6 +38,12 @@ public class PaymentezSDK {
     
     public func initialize(appCode: String, appKey: String) {
         session = PmzSession(appCode: appCode, appKey: appKey)
+        style = PmzStyle()
+    }
+    
+    public func initialize(appCode: String, appKey: String, isProd: Bool) {
+        session = PmzSession(appCode: appCode, appKey: appKey)
+        production = isProd
         style = PmzStyle()
     }
     
@@ -55,6 +62,10 @@ public class PaymentezSDK {
                   }
               hostStatusBarColor = statusBarView.backgroundColor
         }
+    }
+    
+    func isProduction() -> Bool {
+        return production
     }
     
     func isInitialized() -> Bool {

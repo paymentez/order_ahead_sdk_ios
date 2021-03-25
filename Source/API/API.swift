@@ -6,7 +6,8 @@ class API {
     
     struct K {
         struct ProductionServer {
-            static let BASE_URL = "https://middleware-stg.paymentez.com/"
+            static let STG_BASE_URL = "https://middleware-stg.paymentez.com/"
+            static let PROD_BASE_URL = "https://middleware.paymentez.com/"
         }
         
         struct Path {
@@ -69,6 +70,13 @@ class API {
             static let messageOk = "OK"
             static let statusOk = "00"
         }
+    }
+    
+    func getBaseUrl() -> String {
+        if PaymentezSDK.shared.isProduction() {
+            return K.ProductionServer.PROD_BASE_URL
+        }
+        return K.ProductionServer.STG_BASE_URL
     }
     
     func startSession(session: PmzSession, callback: @escaping (String) -> Void, failure: @escaping ((_ error: PmzError) -> Void)) {
@@ -253,6 +261,6 @@ class API {
     }
     
     func getUrl(path: String) -> URL {
-        return URL(string: K.ProductionServer.BASE_URL + path)!
+        return URL(string: getBaseUrl() + path)!
     }
 }
