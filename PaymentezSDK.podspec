@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PaymentezSDK'
-  s.version          = '0.3.22'
+  s.version          = '0.3.23'
   s.summary          = 'Paymentez Order Ahead SDK'
 
 # This description is used to generate tags and improve search results.
