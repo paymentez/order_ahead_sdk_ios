@@ -40,7 +40,7 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LocationManager.sharedInstance.startIfNotStarted()
+        //LocationManager.sharedInstance.startIfNotStarted()
         if let font = PaymentezSDK.shared.style?.getFontString(), font != PmzFontNames.SYSTEM {
             UIFont.overrideInitialize()
         }
@@ -70,22 +70,22 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     }
     
     func checkForLocation() {
-        if(!LocationManager.sharedInstance.isLocationEnabled()) {
+        /*if(!LocationManager.sharedInstance.isLocationEnabled()) {
             LocationManager.sharedInstance.locationListener = self
             LocationManager.sharedInstance.requestWhenInUseAuthorization()
         } else {
             LocationManager.sharedInstance.startIfNotStarted()
-        }
+        }*/
     }
     
     func locationGranted() {
-        LocationManager.sharedInstance.removeListener()
+        //LocationManager.sharedInstance.removeListener()
         setStoreData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        LocationManager.sharedInstance.stopIfStarted()
+        //LocationManager.sharedInstance.stopIfStarted()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -213,13 +213,13 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
                 storeSubtitle.textColor = textColor
                 storeDistance.textColor = textColor
             }
-            if let location = store.location,
+            /*if let location = store.location,
                 let lastKnownLocation = LocationManager.sharedInstance.lastKnownLocation {
                 let distanceString = DistanceHelper.stringForMeters(meters: (lastKnownLocation.distance(from: location)))
                 storeDistance!.text = distanceString
             } else {
                 storeDistance!.text = "-"
-            }
+            }*/
         }
     }
     
@@ -261,7 +261,6 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     @IBAction func backDidPressed(_ sender: Any) {
         if searchBar.isHidden {
             if forcedId || fromReopen {
-                LocationManager.sharedInstance.stopIfStarted()
                 PaymentezSDK.shared.onSearchCancelled()
             } else {
                 self.navigationController?.popViewController(animated: true)

@@ -6,14 +6,15 @@
 //
 
 import Foundation
-import PromiseKit
+//import PromiseKit
 
 protocol CLLocationListener {
     func locationGranted()
 }
 
-class LocationManager: CLLocationManager, CLLocationManagerDelegate {
-    static let sharedInstance = LocationManager()
+class LocationManager{
+//class LocationManager: CLLocationManager, CLLocationManagerDelegate {
+    /*static let sharedInstance = LocationManager()
     var lastKnownLocation: CLLocation?
     var defaultLocation: CLLocation = CLLocation(latitude: -34.6037, longitude: -58.3816)
     var started: Bool = false
@@ -74,7 +75,7 @@ class LocationManager: CLLocationManager, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         debugPrint(error)
-    }
+    }*/
     
 }
 

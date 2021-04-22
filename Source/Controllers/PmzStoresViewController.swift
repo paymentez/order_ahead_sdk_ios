@@ -40,22 +40,22 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
     }
     
     func checkForLocation() {
-        if(!LocationManager.sharedInstance.isLocationEnabled()) {
+        /*if(!LocationManager.sharedInstance.isLocationEnabled()) {
             LocationManager.sharedInstance.locationListener = self
             LocationManager.sharedInstance.requestWhenInUseAuthorization()
         } else {
             LocationManager.sharedInstance.startIfNotStarted()
-        }
+        }*/
     }
     
     func locationGranted() {
-        LocationManager.sharedInstance.removeListener()
+        //LocationManager.sharedInstance.removeListener()
         tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        LocationManager.sharedInstance.stopIfStarted()
+        //LocationManager.sharedInstance.stopIfStarted()
     }
     
     required init?(coder: NSCoder) {

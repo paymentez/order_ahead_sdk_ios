@@ -47,13 +47,13 @@ public class StoreCellView: UITableViewCell {
             contentView.backgroundColor = backgroundColor
         }
         
-        if let location = store.location,
+        /*if let location = store.location,
             let lastKnownLocation = LocationManager.sharedInstance.lastKnownLocation {
             let distanceString = DistanceHelper.stringForMeters(meters: (lastKnownLocation.distance(from: location)))
             distance!.text = distanceString
         } else {
             distance!.text = "-"
-        }
+        }*/
     }
     
     func setImageCorners() {
