@@ -6,11 +6,11 @@
 //
 
 import Foundation
-//import PromiseKit
+import PromiseKit
 
 class DistanceHelper {
     
-    /*static func distanceBetween(location1: CLLocation, location2: CLLocation) -> String {
+    static func distanceBetween(location1: CLLocation, location2: CLLocation) -> String {
         return stringForMeters(meters: location1.distance(from: location2))
     }
     
@@ -25,6 +25,6 @@ class DistanceHelper {
             result = result.replacingOccurrences(of: ".", with: ",")
         }
         return result
-    }*/
+    }
     
 }

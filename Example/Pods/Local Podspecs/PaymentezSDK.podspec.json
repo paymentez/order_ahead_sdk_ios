@@ -1,6 +1,6 @@
 {
   "name": "PaymentezSDK",
-  "version": "0.3.28",
+  "version": "0.3.31",
   "summary": "Paymentez Order Ahead SDK",
   "description": "'Paymentez Order Ahead SDK'",
   "homepage": "https://github.com/paymentez/order_ahead_sdk_ios",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/paymentez/order_ahead_sdk_ios",
-    "tag": "0.3.28"
+    "tag": "0.3.31"
   },
   "platforms": {
     "ios": "10.3"
@@ -27,6 +27,9 @@
     ],
     "XLPagerTabStrip": [
       "~> 9.0"
+    ],
+    "PromiseKit/CoreLocation": [
+      "~> 6.0"
     ]
   },
   "swift_version": "5.0"

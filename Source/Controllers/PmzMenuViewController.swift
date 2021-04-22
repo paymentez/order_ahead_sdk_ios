@@ -40,7 +40,7 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //LocationManager.sharedInstance.startIfNotStarted()
+        LocationManager.sharedInstance.startIfNotStarted()
         if let font = PaymentezSDK.shared.style?.getFontString(), font != PmzFontNames.SYSTEM {
             UIFont.overrideInitialize()
         }
@@ -70,22 +70,22 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     }
     
     func checkForLocation() {
-        /*if(!LocationManager.sharedInstance.isLocationEnabled()) {
+        if(!LocationManager.sharedInstance.isLocationEnabled()) {
             LocationManager.sharedInstance.locationListener = self
             LocationManager.sharedInstance.requestWhenInUseAuthorization()
         } else {
             LocationManager.sharedInstance.startIfNotStarted()
-        }*/
+        }
     }
     
     func locationGranted() {
-        //LocationManager.sharedInstance.removeListener()
+        LocationManager.sharedInstance.removeListener()
         setStoreData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //LocationManager.sharedInstance.stopIfStarted()
+        LocationManager.sharedInstance.stopIfStarted()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -164,15 +164,6 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
                 }
                 if let clearButton = textFieldInsideSearchBar.value(forKey: "_clearButton")as? UIButton {
                     clearButton.isHidden = true
-                    /*if let img3 = clearButton.image(for: .normal) {
-                        clearButton.isHidden = false
-                        let tintedClearImage = img3.withRenderingMode(.alwaysTemplate)
-                        clearButton.setImage(tintedClearImage, for: .normal)
-                        clearButton.setImage(tintedClearImage, for: .highlighted)
-                        clearButton.tintColor = buttonTextColor
-                    }else{
-                       clearButton.isHidden = true
-                    }*/
                 }
             }
         }
@@ -213,13 +204,13 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
                 storeSubtitle.textColor = textColor
                 storeDistance.textColor = textColor
             }
-            /*if let location = store.location,
+            if let location = store.location,
                 let lastKnownLocation = LocationManager.sharedInstance.lastKnownLocation {
                 let distanceString = DistanceHelper.stringForMeters(meters: (lastKnownLocation.distance(from: location)))
                 storeDistance!.text = distanceString
             } else {
                 storeDistance!.text = "-"
-            }*/
+            }
         }
     }
     

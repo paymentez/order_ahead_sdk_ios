@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PaymentezSDK'
-  s.version          = '0.3.30'
+  s.version          = '0.3.31'
   s.summary          = 'Paymentez Order Ahead SDK'
 
 # This description is used to generate tags and improve search results.
@@ -40,4 +40,5 @@ Pod::Spec.new do |s|
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'SDWebImage', '~> 5.0'
   s.dependency 'XLPagerTabStrip', '~> 9.0'
+  s.dependency 'PromiseKit/CoreLocation', '~> 6.0'
 end
