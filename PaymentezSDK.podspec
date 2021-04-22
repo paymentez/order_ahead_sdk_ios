@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PaymentezSDK'
-  s.version          = '0.3.27'
+  s.version          = '0.3.28'
   s.summary          = 'Paymentez Order Ahead SDK'
 
 # This description is used to generate tags and improve search results.
@@ -32,9 +32,6 @@ Pod::Spec.new do |s|
   s.source_files = 'Source/**/*.{swift,xib,xcassets,strings}'
   s.resources = "Source/Controllers/Resources/**/*.xcassets"
   s.swift_version = '5.0'
-  s.info_plist = {
-      'NSLocationWhenInUseUsageDescription' => 'Necesitamos acceso a tu ubicación para mostrarte la distancia a los locales'
-    }
   # s.resource_bundles = {
   #   'PaymentezSDK' => ['PaymentezSDK/Assets/*.png']
   # }
