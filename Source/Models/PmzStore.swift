@@ -1,5 +1,5 @@
 import Foundation
-import PromiseKit
+//import PromiseKit
 
 public class PmzStore {
     
@@ -37,7 +37,7 @@ public class PmzStore {
     public var clientAppCode: String?
     public var sponsor: PmzSponsor?
     
-    var location: CLLocation? {
+    /*var location: CLLocation? {
         get {
             if let latitude = latitude, let longitude = longitude {
                 return CLLocation(latitude: latitude, longitude: longitude)
@@ -45,7 +45,7 @@ public class PmzStore {
                 return nil
             }
         }
-    }
+    }*/
     
     init(){}
     
