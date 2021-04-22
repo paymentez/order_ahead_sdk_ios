@@ -1,7 +1,11 @@
 PODS:
-  - PaymentezSDK (0.3.13):
+  - PaymentezSDK (0.3.25):
+    - PromiseKit/CoreLocation (~> 6.0)
     - SDWebImage (~> 5.0)
     - XLPagerTabStrip (~> 9.0)
+  - PromiseKit/CoreLocation (6.13.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/CorePromise (6.13.1)
   - SDWebImage (5.10.4):
     - SDWebImage/Core (= 5.10.4)
   - SDWebImage/Core (5.10.4)
@@ -12,6 +16,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - PromiseKit
     - SDWebImage
     - XLPagerTabStrip
 
@@ -20,7 +25,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  PaymentezSDK: 8107b89c546dd300f2e4629c9409f8393d02c590
+  PaymentezSDK: f2f0dede29a932606f06063ae6447378c7c4eeaa
+  PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 

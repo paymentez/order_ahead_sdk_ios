@@ -37,5 +37,7 @@
 	</array>
 	<key>CFBundleAllowMixedLocalizations</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Necesitamos acceso a tu ubicación para mostrarte los mejores beneficios</string>
 </dict>
 </plist>

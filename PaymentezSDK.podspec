@@ -32,6 +32,9 @@ Pod::Spec.new do |s|
   s.source_files = 'Source/**/*.{swift,xib,xcassets,strings}'
   s.resources = "Source/Controllers/Resources/**/*.xcassets"
   s.swift_version = '5.0'
+  s.info_plist = {
+      'NSLocationWhenInUseUsageDescription' => 'Necesitamos acceso a tu ubicación para mostrarte la distancia a los locales'
+    }
   # s.resource_bundles = {
   #   'PaymentezSDK' => ['PaymentezSDK/Assets/*.png']
   # }
@@ -40,4 +43,5 @@ Pod::Spec.new do |s|
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'SDWebImage', '~> 5.0'
   s.dependency 'XLPagerTabStrip', '~> 9.0'
+  s.dependency 'PromiseKit/CoreLocation', '~> 6.0'
 end

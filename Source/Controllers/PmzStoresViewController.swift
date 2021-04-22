@@ -1,8 +1,7 @@
 import Foundation
 import UIKit
 
-
-class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, CLLocationListener {
     
     static let PMZ_STORES_VC = "PmzStoresVC"
     
@@ -26,12 +25,37 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
         if let font = PaymentezSDK.shared.style?.getFontString(), font != PmzFontNames.SYSTEM {
             UIFont.overrideInitialize()
         }
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "StoreCellView", bundle: Bundle(for: self.classForCoder)), forCellReuseIdentifier: "StoreCellView")
         setSearchBar()
         setColors()
         startSession()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkForLocation()
+    }
+    
+    func checkForLocation() {
+        if(!LocationManager.sharedInstance.isLocationEnabled()) {
+            LocationManager.sharedInstance.locationListener = self
+            LocationManager.sharedInstance.requestWhenInUseAuthorization()
+        } else {
+            LocationManager.sharedInstance.startIfNotStarted()
+        }
+    }
+    
+    func locationGranted() {
+        LocationManager.sharedInstance.removeListener()
+        tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        LocationManager.sharedInstance.stopIfStarted()
     }
     
     required init?(coder: NSCoder) {

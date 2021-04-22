@@ -70,7 +70,7 @@ class ViewController: UIViewController, PmzSearchCallback, PmzPayAndPlaceCallbac
     @objc func goToSearchWithId() {
         PaymentezSDK.shared
                 .setStyle(style: getStyle())
-                .startSearch(navigationController: navigationController!, buyer: getBuyer(), appOrderReference: "appOrderReference", storeId: 105, callback: self)
+                .startSearch(navigationController: navigationController!, buyer: getBuyer(), appOrderReference: "appOrderReference", storeId: 2, callback: self)
     }
     
     @objc func goToReopenOrder() {

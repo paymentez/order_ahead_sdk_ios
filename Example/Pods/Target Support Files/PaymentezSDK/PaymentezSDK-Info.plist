@@ -15,11 +15,13 @@
   <key>CFBundlePackageType</key>
   <string>FMWK</string>
   <key>CFBundleShortVersionString</key>
-  <string>0.3.13</string>
+  <string>0.3.25</string>
   <key>CFBundleSignature</key>
   <string>????</string>
   <key>CFBundleVersion</key>
   <string>${CURRENT_PROJECT_VERSION}</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Necesitamos acceso a tu ubicación para mostrarte la distancia a los locales</string>
   <key>NSPrincipalClass</key>
   <string></string>
 </dict>
