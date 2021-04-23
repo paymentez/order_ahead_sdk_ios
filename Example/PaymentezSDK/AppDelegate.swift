@@ -11,7 +11,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         displayFirstStory()
-        PaymentezSDK.shared.initialize(appCode: "PMTZ-SDK-LM-CO-SERVER", appKey: "S72CVybhzWRTMFJHnyLLMJS0cXXRpQ4")
+        PaymentezSDK.shared.initialize(appCode: "LIFEMILES", appKey: "53aae0fb1b2441058f0", isProd: true)
+        //PaymentezSDK.shared.initialize(appCode: "PMTZ-SDK-LM-CO-SERVER", appKey: "S72CVybhzWRTMFJHnyLLMJS0cXXRpQ4")
         return true
     }
     

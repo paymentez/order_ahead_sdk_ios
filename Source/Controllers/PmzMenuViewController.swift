@@ -144,23 +144,30 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     
     func setPropperColors() {
         searchBar.backgroundImage = UIImage()
-        if let buttonColor = PaymentezSDK.shared.style?.buttonBackgroundColor {
-            changeStatusBarColor(color: buttonColor)
-            headerBar?.backgroundColor = buttonColor
-            searchBar.backgroundColor = buttonColor
-        }
         if let buttonTextColor = PaymentezSDK.shared.style?.buttonTextColor {
             nextButtonText?.textColor = buttonTextColor
-            backButton?.imageView?.tintColor = buttonTextColor
-            headerTitle?.textColor = buttonTextColor
-            magnifyButton.tintColor = buttonTextColor
-            cartButton.tintColor = buttonTextColor
+        }
+        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
+            headerContainer.backgroundColor = backgroundColor
+            footerContainer.backgroundColor = backgroundColor
+        }
+        if let headerBackgroundColor = PaymentezSDK.shared.style?.headerBackgroundColor {
+            headerBar?.backgroundColor = headerBackgroundColor
+            changeStatusBarColor(color: headerBackgroundColor)
+            searchBar.backgroundColor = headerBackgroundColor
+        }
+        if let headerTextColor = PaymentezSDK.shared.style?.headerTextColor {
+            headerTitle?.textColor = headerTextColor
+            backButton?.imageView?.tintColor = headerTextColor
+            headerTitle?.textColor = headerTextColor
+            magnifyButton.tintColor = headerTextColor
+            cartButton.tintColor = headerTextColor
         
             if let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField {
-                textFieldInsideSearchBar.textColor = buttonTextColor
+                textFieldInsideSearchBar.textColor = headerTextColor
                 if let glassIconView = textFieldInsideSearchBar.leftView as? UIImageView {
                         glassIconView.image = glassIconView.image?.withRenderingMode(.alwaysTemplate)
-                        glassIconView.tintColor = buttonTextColor
+                        glassIconView.tintColor = headerTextColor
                 }
                 if let clearButton = textFieldInsideSearchBar.value(forKey: "_clearButton")as? UIButton {
                     clearButton.isHidden = true
@@ -175,10 +182,6 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
                     }*/
                 }
             }
-        }
-        if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
-            headerContainer.backgroundColor = backgroundColor
-            footerContainer.backgroundColor = backgroundColor
         }
     }
     
@@ -200,9 +203,9 @@ class PmzMenuViewController: BaseButtonBarPagerTabStripViewController<CustomTabI
     func setStoreData() {
         if let store = self.store {
             PmzImageUtils.loadImage(store.imageUrl, imageView: headerImage)
-            PmzImageUtils.loadImage(store.imageUrl, imageView: storeLogo)
+            PmzImageUtils.loadImage(store.commerceImage, imageView: storeLogo)
             
-            storeLogo.layer.borderWidth = 5
+            storeLogo.layer.borderWidth = 0
             storeLogo.layer.borderColor = UIColor.white.cgColor
             
             storeTitle.text = store.name

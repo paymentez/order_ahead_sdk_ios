@@ -23,13 +23,13 @@ public class StoreCellView: UITableViewCell {
         self.store = store
         setImageCorners()
         PmzImageUtils.loadImage(store.imageUrl, imageView: headerImage)
-        PmzImageUtils.loadImage(store.imageUrl, imageView: logo)
+        PmzImageUtils.loadImage(store.commerceImage, imageView: logo)
         
         logoContainer.clipsToBounds = true
         logoContainer.layer.masksToBounds = true
         logoContainer.layer.cornerRadius = 26
         
-        logo.layer.borderWidth = 5
+        logo.layer.borderWidth = 0
         logo.layer.borderColor = UIColor.white.cgColor
         
         title.text = store.name

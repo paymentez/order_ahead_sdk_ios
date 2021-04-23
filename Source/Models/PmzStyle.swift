@@ -14,6 +14,8 @@ public class PmzStyle {
     var buttonBackgroundColor: UIColor?
     var buttonTextColor: UIColor?
     var originalStatusBarColor: UIColor?
+    var headerBackgroundColor: UIColor?
+    var headerTextColor: UIColor?
     
     public init(){}
     
@@ -44,6 +46,16 @@ public class PmzStyle {
     
     public func setOriginalStatusBarColor(_ originalStatusBarColor: UIColor) -> PmzStyle {
         self.originalStatusBarColor = originalStatusBarColor
+        return self
+    }
+    
+    public func setHeaderBackgroundColor(_ headerBackgroundColor: UIColor) -> PmzStyle {
+        self.headerBackgroundColor = headerBackgroundColor
+        return self
+    }
+    
+    public func setHeaderTextColor(_ headerTextColor: UIColor) -> PmzStyle {
+        self.headerTextColor = headerTextColor
         return self
     }
     

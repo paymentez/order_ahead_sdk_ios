@@ -35,7 +35,6 @@ class PaymentezViewController: UIViewController {
             backTextColor?.textColor = textColor
         }
         if let buttonColor = PaymentezSDK.shared.style?.buttonBackgroundColor {
-            headerBar?.backgroundColor = buttonColor
             nextButtonBackground?.backgroundColor = buttonColor
         } else {
             //nextButtonTextColor?.backgroundColor = UIColor(named: "orange")
@@ -43,8 +42,13 @@ class PaymentezViewController: UIViewController {
         }
         if let buttonTextColor = PaymentezSDK.shared.style?.buttonTextColor {
             nextButtonTextColor?.textColor = buttonTextColor
-            backButton?.imageView?.tintColor = buttonTextColor
-            headerTitle?.textColor = buttonTextColor
+        }
+        if let headerBackgroundColor = PaymentezSDK.shared.style?.headerBackgroundColor {
+            headerBar?.backgroundColor = headerBackgroundColor
+        }
+        if let headerTextColor = PaymentezSDK.shared.style?.headerTextColor {
+            headerTitle?.textColor = headerTextColor
+            backButton?.imageView?.tintColor = headerTextColor
         }
     }
     

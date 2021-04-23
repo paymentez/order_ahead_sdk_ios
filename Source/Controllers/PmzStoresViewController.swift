@@ -74,23 +74,40 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
     }
     
     func setColors() {
-        searchBar.backgroundImage = UIImage()
-        if let buttonColor = PaymentezSDK.shared.style?.buttonBackgroundColor {
-            changeStatusBarColor(color: buttonColor)
-            searchBar.backgroundColor = buttonColor
-        }
-        if let textColor = PaymentezSDK.shared.style?.buttonTextColor {
-            magnifyingButton.tintColor = textColor
-            if let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField {
-                textFieldInsideSearchBar.textColor = textColor
-                if let glassIconView = textFieldInsideSearchBar.leftView as? UIImageView {
-                        glassIconView.image = glassIconView.image?.withRenderingMode(.alwaysTemplate)
-                        glassIconView.tintColor = textColor
-                }
-            }
-        }
         if let backgroundColor = PaymentezSDK.shared.style?.backgroundColor {
             tableView.backgroundColor = backgroundColor
+        }
+        if let headerBackgroundColor = PaymentezSDK.shared.style?.headerBackgroundColor {
+            headerBar?.backgroundColor = headerBackgroundColor
+            changeStatusBarColor(color: headerBackgroundColor)
+            searchBar.backgroundColor = headerBackgroundColor
+        }
+        searchBar.backgroundImage = UIImage()
+        if let headerTextColor = PaymentezSDK.shared.style?.headerTextColor {
+            headerTitle?.textColor = headerTextColor
+            backButton?.imageView?.tintColor = headerTextColor
+            headerTitle?.textColor = headerTextColor
+            magnifyingButton.tintColor = headerTextColor
+            UITextField.appearance(whenContainedInInstancesOf: [type(of: searchBar)]).tintColor = headerTextColor
+            if let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField {
+                textFieldInsideSearchBar.textColor = headerTextColor
+                if let glassIconView = textFieldInsideSearchBar.leftView as? UIImageView {
+                        glassIconView.image = glassIconView.image?.withRenderingMode(.alwaysTemplate)
+                        glassIconView.tintColor = headerTextColor
+                }
+                if let clearButton = textFieldInsideSearchBar.value(forKey: "_clearButton")as? UIButton {
+                    clearButton.isHidden = true
+                    /*if let img3 = clearButton.image(for: .normal) {
+                        clearButton.isHidden = false
+                        let tintedClearImage = img3.withRenderingMode(.alwaysTemplate)
+                        clearButton.setImage(tintedClearImage, for: .normal)
+                        clearButton.setImage(tintedClearImage, for: .highlighted)
+                        clearButton.tintColor = buttonTextColor
+                    }else{
+                       clearButton.isHidden = true
+                    }*/
+                }
+            }
         }
     }
     
