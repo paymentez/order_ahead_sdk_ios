@@ -27,7 +27,7 @@ class CartHeaderView: UITableViewCell {
         if let store = store {
             storeName.text = store.name
             storeDesc.text = store.commerceName
-            PmzImageUtils.loadImage(store.imageUrl, imageView: storeLogo)
+            PmzImageUtils.loadImage(store.commerceImage, imageView: storeLogo)
         }
         keepBuyingButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.keepBuyingPressed)))
         
