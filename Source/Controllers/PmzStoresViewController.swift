@@ -168,7 +168,9 @@ class PmzStoresViewController: PaymentezViewController, UITableViewDelegate, UIT
         API.sharedInstance.getStores(callback: { [weak self] (stores) in
             guard let self = self else { return }
             self.dismissPmzLoading()
-            self.stores = stores
+            let lastKnownLocation = LocationManager.sharedInstance.lastKnownLocation
+            let sortStores = stores.sorted { lastKnownLocation!.distance(from: $0.location! ) < lastKnownLocation!.distance(from: $1.location!)}
+            self.stores = sortStores
             self.doFilter(self.filter)
             self.tableView.reloadData()
             }, failure: { [weak self] (error) in
